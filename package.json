@@ -1,0 +1,22 @@
+{
+  "name": "api-ctf",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "init-tsc": "tsc --init",
+    "dev": "tsc & node dist/index.js",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fastify/type-provider-typebox": "^4.0.0",
+    "@sinclair/typebox": "^0.32.27",
+    "@types/node": "^20.12.8",
+    "crypto": "^1.0.1",
+    "fastify": "^4.26.2",
+    "typescript": "^5.4.5"
+  }
+}
