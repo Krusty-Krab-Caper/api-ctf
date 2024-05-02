@@ -14,6 +14,8 @@ export const registerChapter1 = (server: FastifyInstance) => {
 
     server.get('/directory',  async (request: DirectoryEmployeeRequest, response: FastifyReply) => {
         const { id } = request.query
+
+        console.log(request)
     
         if (id === undefined){
     
