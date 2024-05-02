@@ -30,6 +30,6 @@ Rubbing his scheming, microbial hands together, Plankton devised a plan to find 
 #### _Helpful Information_
 
 - The endpoint you'll be using is `http://localhost:8080/directory`
-- There are 100 employees in the Krusty Krab IT department.
+- There are nearly 100 employees in the Krusty Krab IT department.
 - You may need to write some code to help you. 
 - There are no rate limits.
