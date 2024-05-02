@@ -5,7 +5,7 @@ const intervalMin = 100
 const intervalMax = 2000
 
 const countdownMin = 2
-const countdownMax = 5
+const countdownMax = 8
 
 function generateAndLog(countdown: number, currentPlantedLog: number) {
   countdown--
