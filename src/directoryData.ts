@@ -7,9 +7,6 @@ export type DirectoryEntry = {
     jobTitle: string
 }
 
-//player name: Bob
-//target name: Dave
-
 const emplids = [
     '209e651a-a6e7-4242-907a-4760bc3772b7',
     'e87930a6-3552-49af-b8d1-0a185d1721a2',

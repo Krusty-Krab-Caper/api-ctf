@@ -1,5 +1,5 @@
 import { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify'
-import { directoryData, DirectoryEntry } from './data'
+import { directoryData, DirectoryEntry } from './directoryData'
 import { ErrorResponse } from './util'
 
 type DirectoryEmployeeQuery = {

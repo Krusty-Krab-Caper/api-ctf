@@ -1,11 +1,13 @@
 
 import fastify from 'fastify'
 import { registerDirectory } from './directory';
+import { registerClients } from './clientsAdmin';
 import { ErrorResponse } from './util';
 
 const server = fastify();
 
 registerDirectory(server)
+registerClients(server)
 
 server.setNotFoundHandler(async function (request, reply) {
     await reply.code(404).send(ErrorResponse(404, 'Path not found'))
