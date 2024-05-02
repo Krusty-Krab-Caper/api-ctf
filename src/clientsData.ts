@@ -71,3 +71,8 @@ const clientSecrets: string[] = [
 
 export const clientRegistryData: Map<string, ClientRegistryEntry> = new Map()
 
+clientRegistryData.set(clientIds[0], {
+    clientId: clientIds[0],
+    name: 'This is one of the apps I suppose'
+})
+
