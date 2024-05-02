@@ -26,10 +26,10 @@ type Endpoint = {
 }
 
 const hostEndpointMap: Record<string, Endpoint[]> = {
-  'localhost:4445': [
+  'localhost:8080': [
     { path: '/directory', methods: ['GET', 'POST', 'PUT', 'DELETE'] },
     { path: '/employee', methods: ['GET', 'POST', 'PUT', 'DELETE'], needsAuth: true },
-    { path: '/oauth/clients', methods: ['GET', 'POST', 'DELETE'], needsAuth: true },
+    { path: '/clients', methods: ['GET', 'POST', 'DELETE'], needsAuth: true },
     { path: '/payroll', methods: ['GET', 'POST'], needsAuth: true }
   ],
   'facebook.com': [

@@ -1,5 +1,6 @@
 import { randomToken, generateRandomLog } from './randomLog'
 import { plantedLogs } from './plantedLogs'
+import { time } from 'console'
 
 const intervalMin = 100
 const intervalMax = 2000
@@ -7,12 +8,27 @@ const intervalMax = 2000
 const countdownMin = 2
 const countdownMax = 8
 
+async function displayEndMessages() {
+  await new Promise((resolve) => setTimeout(resolve, 1000))
+  for (let i = 0; i < 3; i++) {
+    console.log('Error: Failed to connect. Retrying...')
+    await new Promise((resolve) => setTimeout(resolve, 1000))
+  }
+  console.log('Connection failed. Please try again later.')
+}
+
 function generateAndLog(countdown: number, currentPlantedLog: number) {
   countdown--
   if (countdown === 0) {
-    console.log(plantedLogs[currentPlantedLog])
+    if (currentPlantedLog >= plantedLogs.length) {
+      displayEndMessages()
+      return
+    }
+    console.log({
+      ...plantedLogs[currentPlantedLog],
+      time: new Date().toISOString()
+    })
     currentPlantedLog++
-    currentPlantedLog %= plantedLogs.length
     countdown = Math.floor(Math.random() * (countdownMax - countdownMin)) + countdownMin
   } else {
     const randomLog = generateRandomLog()
