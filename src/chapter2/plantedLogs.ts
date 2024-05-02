@@ -1,8 +1,10 @@
-import { time } from 'console'
 import { randomToken } from './randomLog'
 
 const targetEmplid = '12345'
 const targetToken = randomToken()
+const vaultSiteName = 'vault-site'
+const vaultSiteRepoUrl = 'TODO'
+
 const targetHeaders = {
   accept: 'application/json',
   'user-agent':
@@ -48,7 +50,7 @@ const tokenTeams4 = randomToken()
 const teamsConvo1and2Messages = [
   {
     token: tokenTeams1,
-    message: 'Ok, I just submitted the PR for the vault-site repo. Can you approve it?'
+    message: `Ok, I just submitted the PR for the ${vaultSiteName} repo. Can you approve it?`
   },
   {
     token: tokenTeams2,
@@ -93,12 +95,11 @@ const teamsConvo1and2Messages = [
 const teamsConvo2and3Messages = [
   {
     token: tokenTeams3,
-    message:
-      'Hey, can you remind me the link to the vault-site repo? I need to share it with a new team member.'
+    message: `Hey, can you remind me the link to the ${vaultSiteName} repo? I need to share it with a new team member.`
   },
   {
     token: tokenTeams2,
-    message: 'Sure, here it is: <TODO>'
+    message: `Sure, here it is: ${vaultSiteRepoUrl}`
   },
   {
     token: tokenTeams3,
