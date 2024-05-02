@@ -1,17 +1,11 @@
 
-import fastify, { FastifyReply, FastifyRequest } from 'fastify'
-import { directoryData, DirectoryEntry } from './data'
-import { ErrorResponse, sha1 } from './util';
+import fastify from 'fastify'
+import { registerChapter1 } from './chapter1';
+import { ErrorResponse } from './util';
 
 const server = fastify();
 
-type DirectoryEmployeeQuery = {
-    id: string
-}
-
-type DirectoryEmployeeRequest = FastifyRequest<{
-    Querystring: DirectoryEmployeeQuery
-}>
+registerChapter1(server)
 
 server.setNotFoundHandler(async function (request, reply) {
     await reply.code(404).send(ErrorResponse(404, 'Path not found'))
@@ -27,23 +21,6 @@ server.setNotFoundHandler(async function (request, reply) {
       await reply.code(error.statusCode ?? 500).send(ErrorResponse(500, error.message))
     }
   })
-
-server.get('/directory',  async (request: DirectoryEmployeeRequest, response: FastifyReply) => {
-    const { id } = request.query
-
-    let directoryEntry: DirectoryEntry | undefined = directoryData.get(id) 
-
-    if (directoryEntry === undefined) {
-        response.code(404).send(ErrorResponse(404, "Not Found"))
-    }
-    else {
-
-        response.send(directoryEntry)
-
-    }
-
-    console.log(sha1(id))
-})
 
 server.listen({ port: 8080 }, (err, address) => {
     if (err) {
