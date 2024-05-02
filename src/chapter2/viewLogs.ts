@@ -1,6 +1,5 @@
-import { randomToken, generateRandomLog } from './randomLog'
+import { generateRandomLog } from './randomLog'
 import { plantedLogs } from './plantedLogs'
-import { time } from 'console'
 
 const intervalMin = 100
 const intervalMax = 2000
@@ -9,10 +8,10 @@ const countdownMin = 2
 const countdownMax = 8
 
 async function displayEndMessages() {
-  await new Promise((resolve) => setTimeout(resolve, 1000))
+  await new Promise((resolve) => setTimeout(resolve, 2000))
   for (let i = 0; i < 3; i++) {
     console.log('Error: Failed to connect. Retrying...')
-    await new Promise((resolve) => setTimeout(resolve, 1000))
+    await new Promise((resolve) => setTimeout(resolve, 2000))
   }
   console.log('Connection failed. Please try again later.')
 }
