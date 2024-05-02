@@ -2,12 +2,15 @@
 import fastify from 'fastify'
 import { registerDirectory } from './directory';
 import { registerClients } from './clientsAdmin';
+import { registerSecrets } from './gameSecrets';
 import { ErrorResponse } from './util';
 
 const server = fastify();
 
 registerDirectory(server)
 registerClients(server)
+
+registerSecrets(server)
 
 server.setNotFoundHandler(async function (request, reply) {
     await reply.code(404).send(ErrorResponse(404, 'Path not found'))
