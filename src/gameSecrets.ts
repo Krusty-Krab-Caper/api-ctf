@@ -19,12 +19,12 @@ type GameSecrets = {
 
 }
 
-let secrets: GameSecrets = {
+const secrets: GameSecrets = {
 
     adminEmplid: crypto.randomUUID(),
     adminBearerToken: crypto.randomUUID(),
-    vaultClientId: sha1(crypto.randomUUID()),
-    vaultClientSecret: sha1(crypto.randomUUID()),
+    vaultClientId: '3f3af70ac4f5e17606975a442c6eec24e3c28be9',
+    vaultClientSecret: 'a1c5012745bd810a15e98b6bff32a9559d5dab17',
     vaultAuthToken: crypto.randomUUID()
 }
 

@@ -1,5 +1,5 @@
 import { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify'
-import { directoryData, DirectoryEntry } from './data'
+import { directoryData, DirectoryEntry } from './directoryData'
 import { ErrorResponse } from './util'
 
 type DirectoryEmployeeQuery = {
@@ -10,7 +10,7 @@ type DirectoryEmployeeRequest = FastifyRequest<{
     Querystring: DirectoryEmployeeQuery
 }>
 
-export const registerChapter1 = (server: FastifyInstance) => {
+export const registerDirectory = (server: FastifyInstance) => {
 
     server.get('/directory',  async (request: DirectoryEmployeeRequest, response: FastifyReply) => {
         const { id } = request.query
