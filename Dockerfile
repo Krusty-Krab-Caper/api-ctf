@@ -4,7 +4,7 @@ FROM node:20
 WORKDIR /app
 
 # Copy the contents of the host's current directory (usually the root directory) into the container's /app directory
-COPY . .
+COPY . /app
 
 # Build your application (you can replace this with your specific build commands)
 RUN npm install
