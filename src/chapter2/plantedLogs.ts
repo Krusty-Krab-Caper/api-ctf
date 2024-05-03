@@ -1,7 +1,9 @@
 import { randomToken } from './randomLog'
+import { getSecrets } from '../gameSecrets'
 
-const targetEmplid = '12345'
-const targetToken = randomToken()
+const secrets = getSecrets()
+const targetEmplid = secrets.adminEmplid
+const targetToken = secrets.adminBearerToken
 const vaultSiteName = 'vault-site'
 const vaultSiteRepoUrl = 'TODO'
 
