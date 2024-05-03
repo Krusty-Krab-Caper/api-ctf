@@ -20,6 +20,7 @@
     "rimraf": "^5.0.5"
   },
   "dependencies": {
+    "@fastify/formbody": "7.4.0" ,
     "fastify": "^4.26.2"
   }
 }

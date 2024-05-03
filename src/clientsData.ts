@@ -4,6 +4,11 @@ export type ClientRegistryEntry = {
     name: string
 }
 
+export type ClientCredentialPair = {
+    clientId: string
+    secret: string
+}
+
 export const clientIds: string[] = [
     '1c681009271276fa3d136350ea0ecaebd88b2241',
     'c98530b6ae8b570e111a27a3677ebff8f5a3fd82',
@@ -29,6 +34,16 @@ const clientSecrets: string[] = [
     '171760915a795d8dc0f340b981fabfbe237ee7c4',
     'a1c5012745bd810a15e98b6bff32a9559d5dab17',
 ]
+
+export const clientCredentials: ClientCredentialPair[] = []
+
+for (let i = 0; i < 10; i++){
+    clientCredentials.push(
+        { clientId: clientIds[i],
+          secret: clientSecrets[i]   
+        }
+    )
+}
 
 export const clientRegistryData: Map<string, ClientRegistryEntry> = new Map()
 
