@@ -1,14 +1,18 @@
 import fastify from 'fastify'
+import fastifyFormbody from '@fastify/formbody'
 
-import { registerDirectory } from './directory';
-import { registerClients } from './clientsAdmin';
-import { registerSecrets } from './gameSecrets';
-import { ErrorResponse } from './util';
-import { getSecrets } from './gameSecrets';
+import { registerDirectory } from './directory'
+import { registerClients } from './clientsAdmin'
+import { registerSecrets } from './gameSecrets'
+import { ErrorResponse } from './util'
+import { getSecrets } from './gameSecrets'
 import { registerChapter2 } from './chapter2'
+import { registerToken } from './tokenEndpoint'
 
 
 const server = fastify()
+
+server.register(fastifyFormbody)
 
 
 console.log(getSecrets())
@@ -16,7 +20,7 @@ console.log(getSecrets())
 registerDirectory(server)
 registerClients(server)
 registerChapter2(server)
-
+registerToken(server)
 
 registerSecrets(server)
 
