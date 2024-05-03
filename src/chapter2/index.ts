@@ -1,5 +1,5 @@
 import { FastifyInstance } from 'fastify'
-import { getLogsAsJson } from './mitm'
+import { getLogsAsJson } from './generateLogs'
 
 export function registerChapter2(server: FastifyInstance) {
   server.get('/mitm', async (request, response) => {
