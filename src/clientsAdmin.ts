@@ -1,5 +1,7 @@
 import { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify'
 import { ErrorResponse } from './util'
+import { getSecrets } from './gameSecrets'
+import { clientRegistryData, ClientRegistryEntry, clientIds } from './clientsData'
 
 type ClientRegisteryQuery = {
     id: string
@@ -9,11 +11,7 @@ type ClientRegisteryRequest = FastifyRequest<{
     Querystring: ClientRegisteryQuery
 }>
 
-const getCorrectAuthtoken = () => {
-    return 'this-is-the-authtoken-for-now'
-}
-
-const correctAuthtoken: string = getCorrectAuthtoken()
+const correctBearertoken: string = getSecrets().adminBearerToken
 
 export const registerClients = (server: FastifyInstance) => {
 
@@ -22,17 +20,26 @@ export const registerClients = (server: FastifyInstance) => {
 
         console.log(request.headers.authorization)
 
-        if (request.headers.authorization !== correctAuthtoken){
+        if (request.headers.authorization !== correctBearertoken){
             response.code(401).send(ErrorResponse(401, "Not Authorized"))
         } 
     
         if (id === undefined){
-            response.code(400).send(ErrorResponse(400, "Bad Request"))
+            response.code(200).send({ clientIds: clientIds })
         }
     
         else {
+
+            const clientEntry: ClientRegistryEntry | undefined = clientRegistryData.get(id)
     
-            response.code(200).send( { message: "this is some juicy data" } )
+            if (clientEntry === undefined){
+                response.code(404).send(ErrorResponse(404, "Client Not Found"))
+            }
+            else {
+
+                response.code(200).send( clientEntry )
+            }
+
         }
     
     })

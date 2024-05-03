@@ -4,8 +4,11 @@ import { registerDirectory } from './directory';
 import { registerClients } from './clientsAdmin';
 import { registerSecrets } from './gameSecrets';
 import { ErrorResponse } from './util';
+import { getSecrets } from './gameSecrets';
 
 const server = fastify();
+
+console.log(getSecrets())
 
 registerDirectory(server)
 registerClients(server)

@@ -1,4 +1,5 @@
 import { sha1 } from './util'
+import { getSecrets } from './gameSecrets'
 
 export type DirectoryEntry = {
     name: string,
@@ -380,7 +381,7 @@ directoryData.set(sha1('Triton Bubbles'), {
 
 directoryData.set(sha1('Coralio Flounder'), {
     name: 'Coralio Flounder',
-    emplid: emplids[38],
+    emplid: getSecrets().adminEmplid,
     dob: '1964/7/20',
     jobTitle: 'Systems Administrator'
 })
