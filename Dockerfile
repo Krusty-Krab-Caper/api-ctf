@@ -4,7 +4,7 @@ FROM node:20
 WORKDIR /app
 
 # Copy the contents of the host's current directory (usually the root directory) into the container's /app directory
-COPY . /app
+COPY . .
 
 # Build your application (you can replace this with your specific build commands)
 RUN npm install
@@ -12,4 +12,4 @@ RUN npm install
 EXPOSE 8080
 
 # Specify the command to run within the container
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "build"]
