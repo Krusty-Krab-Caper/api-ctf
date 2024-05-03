@@ -64,4 +64,4 @@ function getAndDisplayLogs() {
   displayLogs(logs)
 }
 
-getAndDisplayLogs()
+// getAndDisplayLogs()
