@@ -16,30 +16,52 @@ async function displayEndMessages() {
   console.log('Connection failed. Please try again later.')
 }
 
-function generateAndLog(countdown: number, currentPlantedLog: number) {
-  countdown--
-  if (countdown === 0) {
-    if (currentPlantedLog >= plantedLogs.length) {
-      displayEndMessages()
-      return
+function generateLogs(): string[] {
+  const logs = []
+  let countdown = Math.floor(Math.random() * (countdownMax - countdownMin)) + countdownMin
+  let currentPlantedLog = 0
+  while (currentPlantedLog < plantedLogs.length) {
+    countdown--
+    if (countdown === 0) {
+      logs.push(
+        JSON.stringify({
+          ...plantedLogs[currentPlantedLog],
+          time: new Date().toISOString()
+        })
+      )
+      currentPlantedLog++
+      countdown = Math.floor(Math.random() * (countdownMax - countdownMin)) + countdownMin
+    } else {
+      logs.push(JSON.stringify(generateRandomLog()))
     }
-    console.log({
-      ...plantedLogs[currentPlantedLog],
-      time: new Date().toISOString()
-    })
-    currentPlantedLog++
-    countdown = Math.floor(Math.random() * (countdownMax - countdownMin)) + countdownMin
-  } else {
-    const randomLog = generateRandomLog()
-    console.log(randomLog)
   }
+  // pad with `countdown` random logs
+  for (let i = 0; i < countdown; i++) {
+    logs.push(JSON.stringify(generateRandomLog()))
+  }
+  return logs
+}
 
+export function getLogsAsJson(): string {
+  return JSON.stringify(generateLogs())
+}
+
+function displayLogs(logs: string[]) {
+  if (logs.length === 0) {
+    displayEndMessages()
+    return
+  }
+  console.log(logs.shift())
   setTimeout(
-    () => generateAndLog(countdown, currentPlantedLog),
+    () => displayLogs(logs),
     Math.floor(Math.random() * (intervalMax - intervalMin)) + intervalMin
   )
 }
 
-const currentPlantedLog = 0
-const countdown = Math.floor(Math.random() * (countdownMax - countdownMin)) + countdownMin
-generateAndLog(countdown, currentPlantedLog)
+function getAndDisplayLogs() {
+  const logsJson = getLogsAsJson()
+  const logs = JSON.parse(logsJson)
+  displayLogs(logs)
+}
+
+getAndDisplayLogs()
