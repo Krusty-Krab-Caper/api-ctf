@@ -13,7 +13,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@fastify/formbody": "7.4.0" ,
     "@fastify/type-provider-typebox": "^4.0.0",
     "@sinclair/typebox": "^0.32.27",
     "@types/node": "^20.12.8",
@@ -21,6 +20,7 @@
     "rimraf": "^5.0.5"
   },
   "dependencies": {
+    "@fastify/formbody": "7.4.0" ,
     "fastify": "^4.26.2"
   }
 }
