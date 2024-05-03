@@ -1,3 +1,6 @@
+/*
+ * This script is the source code for the mitm.js script on the user distributed repo. The version on the user's repo is obfuscated.
+ */
 async function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
