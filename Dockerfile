@@ -8,8 +8,9 @@ COPY . .
 
 # Build your application (you can replace this with your specific build commands)
 RUN npm install
+RUN npm run build
 
 EXPOSE 8080
 
 # Specify the command to run within the container
-CMD ["npm", "run", "build"]
+CMD ["npm", "run", "start"]
