@@ -6,20 +6,20 @@ import { registerClients } from './clientsAdmin'
 import { registerSecrets } from './gameSecrets'
 import { ErrorResponse } from './util'
 import { getSecrets } from './gameSecrets'
-import { registerChapter2 } from './chapter2'
+import { registerMitm } from './mitm'
+import { registerVault } from './vault'
 import { registerToken } from './tokenEndpoint'
-
 
 const server = fastify()
 
 server.register(fastifyFormbody)
 
-
 console.log(getSecrets())
 
 registerDirectory(server)
 registerClients(server)
-registerChapter2(server)
+registerMitm(server)
+registerVault(server)
 registerToken(server)
 
 registerSecrets(server)

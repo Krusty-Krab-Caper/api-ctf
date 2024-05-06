@@ -46,7 +46,10 @@ async function displayLogs(logs) {
   //   const numLogs = logs.length
   const numLogs = 10
   for (let i = 0; i < numLogs; i++) {
-    console.log(logs[i])
+    console.log({
+      ...JSON.parse(logs[i]),
+      time: new Date().toISOString()
+    })
     await randomSleep(intervalMin, intervalMax)
   }
 }
