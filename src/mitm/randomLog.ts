@@ -1,4 +1,4 @@
-import crypto from 'crypto'
+import { randomToken } from '../util'
 
 const statusTextMap: Record<number, string> = {
   200: 'OK',
@@ -26,12 +26,6 @@ type Endpoint = {
 }
 
 const hostEndpointMap: Record<string, Endpoint[]> = {
-  'localhost:8080': [
-    { path: '/directory', methods: ['GET', 'POST', 'PUT', 'DELETE'] },
-    { path: '/employee', methods: ['GET', 'POST', 'PUT', 'DELETE'], needsAuth: true },
-    { path: '/clients', methods: ['GET', 'POST', 'DELETE'], needsAuth: true },
-    { path: '/payroll', methods: ['GET', 'POST'], needsAuth: true }
-  ],
   'facebook.com': [
     { path: '/profile', methods: ['GET', 'POST', 'PUT', 'DELETE'], needsAuth: true },
     { path: '/feed', methods: ['GET'] },
@@ -74,9 +68,6 @@ const hostEndpointMap: Record<string, Endpoint[]> = {
     { path: '/notifications', methods: ['GET'], needsAuth: true },
     { path: '/messages', methods: ['GET'], needsAuth: true }
   ]
-}
-export function randomToken() {
-  return crypto.randomBytes(32).toString('hex')
 }
 function randomUserAgent() {
   const agents = [

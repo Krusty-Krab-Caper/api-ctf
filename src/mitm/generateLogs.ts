@@ -2,7 +2,7 @@ import { generateRandomLog } from './randomLog'
 import { plantedLogs } from './plantedLogs'
 
 const countdownMin = 2
-const countdownMax = 8
+const countdownMax = 6
 
 function generateLogs(): string[] {
   const logs = []
