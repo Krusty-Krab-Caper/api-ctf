@@ -18,8 +18,6 @@ export const registerToken = (server: FastifyInstance) => {
     server.post('/token',  async (request: TokenRequest, response: FastifyReply) => {
         const { grant_type } = request.body
 
-        console.log(request.headers.authorization)
-
         if (grant_type !== 'client_credentials'){
             response.code(400).send(ErrorResponse(400, "The required 'grant_type' parameter not included in post body"))
         }
