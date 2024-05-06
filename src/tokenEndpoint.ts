@@ -19,7 +19,7 @@ export const registerToken = (server: FastifyInstance) => {
         const { grant_type } = request.body
 
         if (grant_type !== 'client_credentials'){
-            response.code(400).send(ErrorResponse(400, "The required 'grant_type' parameter not included in post body"))
+            response.code(400).send(ErrorResponse(400, "Bad Request: The required 'grant_type' parameter not included in post body (Hint: how do you request a token from Tyk at BYU?)"))
         }
 
         if (!isValidCredentials(request.headers.authorization)){
