@@ -20,7 +20,7 @@ export const registerClients = (server: FastifyInstance) => {
 
         console.log(request.headers.authorization)
 
-        if (request.headers.authorization !== correctBearertoken){
+        if (request.headers.authorization !== 'Bearer ' + correctBearertoken){
             response.code(401).send(ErrorResponse(401, "Not Authorized"))
         } 
     
@@ -39,8 +39,6 @@ export const registerClients = (server: FastifyInstance) => {
 
                 response.code(200).send( clientEntry )
             }
-
         }
-    
     })
 }

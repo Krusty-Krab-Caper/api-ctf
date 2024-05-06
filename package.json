@@ -5,18 +5,22 @@
   "main": "index.js",
   "scripts": {
     "init-tsc": "tsc --init",
-    "dev": "tsc & node ./dist/index.js",
-    "build": "tsc",
+    "dev": "npm run build && npm run start",
+    "build": "rimraf ./dist && tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./dist/index.js"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
     "@fastify/type-provider-typebox": "^4.0.0",
     "@sinclair/typebox": "^0.32.27",
     "@types/node": "^20.12.8",
-    "fastify": "^4.26.2",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "rimraf": "^5.0.5"
+  },
+  "dependencies": {
+    "@fastify/formbody": "7.4.0" ,
+    "fastify": "^4.26.2"
   }
 }
