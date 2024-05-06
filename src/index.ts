@@ -1,22 +1,21 @@
 import fastify from 'fastify'
 
-import { registerDirectory } from './directory';
-import { registerClients } from './clientsAdmin';
-import { registerSecrets } from './gameSecrets';
-import { ErrorResponse } from './util';
-import { getSecrets } from './gameSecrets';
+import { registerDirectory } from './directory'
+import { registerClients } from './clientsAdmin'
+import { registerSecrets } from './gameSecrets'
+import { ErrorResponse } from './util'
+import { getSecrets } from './gameSecrets'
 import { registerChapter2 } from './chapter2'
-
+import { registerVault } from './vault'
 
 const server = fastify()
-
 
 console.log(getSecrets())
 
 registerDirectory(server)
 registerClients(server)
 registerChapter2(server)
-
+registerVault(server)
 
 registerSecrets(server)
 
