@@ -14,8 +14,6 @@ const server = fastify()
 
 server.register(fastifyFormbody)
 
-console.log(getSecrets())
-
 registerDirectory(server)
 registerClients(server)
 registerMitm(server)
