@@ -18,10 +18,8 @@ export const registerClients = (server: FastifyInstance) => {
     server.get('/clients',  async (request: ClientRegisteryRequest, response: FastifyReply) => {
         const { id } = request.query
 
-        console.log(request.headers.authorization)
-
         if (request.headers.authorization !== 'Bearer ' + correctBearertoken){
-            response.code(401).send(ErrorResponse(401, "Not Authorized"))
+            response.code(401).send(ErrorResponse(401, "Not Authorized (Hint: Someone in the organization has an active session!)"))
         } 
     
         if (id === undefined){

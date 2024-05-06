@@ -4,8 +4,8 @@ import { getSecrets } from '../gameSecrets'
 const secrets = getSecrets()
 const targetEmplid = secrets.adminEmplid
 const targetToken = secrets.adminBearerToken
-const vaultSiteName = 'vault-site'
-const vaultSiteRepoUrl = 'TODO'
+const vaultSiteName = 'Krusty Kiosk'
+const vaultSiteRepoUrl = 'https://github.com/Krusty-Krab-Caper/krusty-kiosk'
 
 const targetHeaders = {
   accept: 'application/json',

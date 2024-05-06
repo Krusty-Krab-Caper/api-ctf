@@ -33,7 +33,7 @@ export const registerDirectory = (server: FastifyInstance) => {
             let directoryEntry: DirectoryEntry | undefined = directoryData.get(id) 
         
             if (directoryEntry === undefined) {
-                response.code(404).send(ErrorResponse(404, "Not Found"))
+                response.code(404).send(ErrorResponse(404, "Not Found (Hint: what is the relationship between what's typed in the browser and what's sent in the query?)"))
             }
             else {
         

@@ -19,11 +19,11 @@ export const registerToken = (server: FastifyInstance) => {
         const { grant_type } = request.body
 
         if (grant_type !== 'client_credentials'){
-            response.code(400).send(ErrorResponse(400, "The required 'grant_type' parameter not included in post body"))
+            response.code(400).send(ErrorResponse(400, "Bad Request: The required 'grant_type' parameter not valid (Hint: what kind of credentials are these?)"))
         }
 
         if (!isValidCredentials(request.headers.authorization)){
-            response.code(401).send(ErrorResponse(401, "Not Authorized: Invalid or malformed credentials."))
+            response.code(401).send(ErrorResponse(401, "Not Authorized: Invalid or malformed credentials. (Hint: try the -u flag)"))
         } 
         else {
 
