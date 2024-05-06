@@ -1,5 +1,5 @@
 import { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify'
-import { ErrorResponse } from './util'
+import { ErrorResponse, randomToken } from './util'
 import { getSecrets } from './gameSecrets'
 import { clientCredentials, ClientCredentialPair } from './clientsData'
 
@@ -29,7 +29,7 @@ export const registerToken = (server: FastifyInstance) => {
 
             if (request.headers.authorization !== 'Basic ' + correctVaultCredentials){
                 response.code(200).send( {
-                    "access_token": crypto.randomUUID(),
+                    "access_token": randomToken(),
                     "expires_in":3599,
                     "scope":"",
                     "token_type":"bearer"
