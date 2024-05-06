@@ -43,8 +43,7 @@ async function getLogsAsJson() {
 const intervalMin = 100
 const intervalMax = 2000
 async function displayLogs(logs) {
-  //   const numLogs = logs.length
-  const numLogs = 10
+  const numLogs = logs.length
   for (let i = 0; i < numLogs; i++) {
     console.log({
       ...JSON.parse(logs[i]),
