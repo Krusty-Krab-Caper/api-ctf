@@ -58,8 +58,6 @@ function isValidCredentials(input: string | undefined): boolean{
 
     clientCredentials.forEach((pair:ClientCredentialPair) => {
 
-        console.log('Pair: ' + btoa(pair.clientId + ':' + pair.secret) + ' HEADER: ' + input)
-
         if (('Basic ' + btoa(pair.clientId + ':' + pair.secret)) == input){
             valid = true
         }
