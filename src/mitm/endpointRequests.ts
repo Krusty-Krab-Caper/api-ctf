@@ -6,16 +6,10 @@ import { clientCredentials } from '../clientsData'
 import { requestPrototype } from './requestPrototype'
 
 const secrets = getSecrets()
-const targetEmplid = secrets.adminEmplid
-const targetToken = secrets.adminBearerToken
-/*
- * endpoints: /directory, /clients, /vault, /token
- * /directory: optional query parameter id, no auth token needed
- * /clients: optional query parameter id, needs auth token
- * /vault: no query parameters, needs auth token
- * /token: no query parameters, no auth token needed, POST, -u id:secret, -d grant_type=client_credentials
- */
-// convert directoryData keys to array
+const adminEmplid = secrets.adminEmplid
+const adminToken = secrets.adminBearerToken
+
+// Directory endpoint
 const directoryIds = Array.from(directoryData.keys())
 const directoryRequestPrototype = {
   ...requestPrototype,
@@ -50,17 +44,18 @@ export const directoryRequests = [
   }
 ].sort(() => Math.random() - 0.5)
 
-export const targetLog = {
+// Clients endpoint
+export const targetClientRequest = {
   ...requestPrototype,
   http_request: {
     ...requestPrototype.http_request,
     headers: {
       ...requestPrototype.http_request.headers,
-      authorization: 'Bearer ' + targetToken
+      authorization: 'Bearer ' + adminToken
     },
     method: 'GET',
     path: '/clients',
-    query: 'emplid=' + targetEmplid
+    query: 'emplid=' + adminEmplid
   },
   http_response: {
     ...requestPrototype.http_response,
@@ -89,7 +84,11 @@ const clientsRequestPrototype = {
     text_status: 'Unauthorized'
   }
 }
-export const clientsRequests = [targetLog, clientsRequestPrototype].sort(() => Math.random() - 0.5)
+export const clientsRequests = [targetClientRequest, clientsRequestPrototype].sort(
+  () => Math.random() - 0.5
+)
+
+// Vault endpoint
 const vaultRequestPrototype = {
   ...requestPrototype,
   http_request: {
@@ -109,6 +108,8 @@ const vaultRequestPrototype = {
   }
 }
 export const vaultRequests = [vaultRequestPrototype]
+
+// Token endpoint
 const tokenRequestPrototype = {
   ...requestPrototype,
   http_request: {
