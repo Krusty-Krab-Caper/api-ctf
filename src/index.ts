@@ -6,7 +6,7 @@ import { registerClients } from './clientsAdmin'
 import { registerSecrets } from './gameSecrets'
 import { ErrorResponse } from './util'
 import { getSecrets } from './gameSecrets'
-import { registerChapter2 } from './chapter2'
+import { registerChapter2 } from './mitm'
 import { registerVault } from './vault'
 import { registerToken } from './tokenEndpoint'
 
