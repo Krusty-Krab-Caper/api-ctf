@@ -82,7 +82,7 @@ const html = `
 export function registerVault(server: FastifyInstance) {
   server.get('/vault', async (request, reply) => {
     const receivedToken = request.headers.authorization
-    const requiredToken = getSecrets().vaultAuthToken
+    const requiredToken = 'Bearer ' + getSecrets().vaultAuthToken
 
     if (receivedToken !== requiredToken) {
       await reply.code(401).send('Unauthorized')
