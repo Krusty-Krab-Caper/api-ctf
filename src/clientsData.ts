@@ -1,5 +1,6 @@
 import { getSecrets } from "./gameSecrets"
-
+import { randomToken } from "./util" 
+import { emplids } from "./directoryData"
 
 export type ClientRegistryEntry = {
     clientId: string
@@ -34,6 +35,26 @@ export const employeeClientAccessData: Map<string, EmployeeAccessRecord> = new M
 employeeClientAccessData.set(getSecrets().adminBearerToken, {
     emplid: getSecrets().adminEmplid,
     clientIds: clientIds
+})
+
+employeeClientAccessData.set('Bearer ' + randomToken(), {
+    emplid: emplids[9],
+    clientIds: [clientIds[3], clientIds[5]]
+})
+
+employeeClientAccessData.set('Bearer ' + randomToken(), {
+    emplid: emplids[16],
+    clientIds: [clientIds[2]]
+})
+
+employeeClientAccessData.set('Bearer ' + randomToken(), {
+    emplid: emplids[27],
+    clientIds: [clientIds[4]]
+})
+
+employeeClientAccessData.set('Bearer ' + randomToken(), {
+    emplid: emplids[40],
+    clientIds: [clientIds[4]]
 })
 
 

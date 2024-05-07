@@ -8,7 +8,7 @@ export type DirectoryEntry = {
     jobTitle: string
 }
 
-const emplids = [
+export const emplids = [
     '209e651a-a6e7-4242-907a-4760bc3772b7',
     'e87930a6-3552-49af-b8d1-0a185d1721a2',
     'c1d28155-2b79-4d5c-8f85-9d56d8b5c736',
