@@ -57,7 +57,7 @@ const redHerringEmplidRequests = redHerringTokens.map((token) => ({
     ...requestPrototype.http_request,
     headers: {
       ...requestPrototype.http_request.headers,
-      authorization: `Bearer ${token}`
+      authorization: token
     },
     method: 'GET',
     path: '/clients',
@@ -76,7 +76,7 @@ const redHerringClientIdRequests = redHerringTokens.map((token) => ({
     ...requestPrototype.http_request,
     headers: {
       ...requestPrototype.http_request.headers,
-      authorization: `Bearer ${token}`
+      authorization: token
     },
     method: 'GET',
     path: '/clients',
