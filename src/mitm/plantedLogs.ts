@@ -6,16 +6,17 @@ import { teamsConvos } from './teamsConvos'
 
 const logLists = [...teamsConvos, directoryRequests, clientsRequests, vaultRequests, tokenRequests]
 
-const plantedLogs: any[] = [...logLists[0]]
+const plantedLogs: any[] = []
 
-for (let i = 1; i < logLists.length; i++) {
-  const logs = logLists[i]
-  let minPlantedLogIndex = 0
-  for (let j = 0; j < logs.length; j++) {
-    const randomIndex =
-      Math.floor(Math.random() * (plantedLogs.length - minPlantedLogIndex)) + minPlantedLogIndex
-    plantedLogs.splice(randomIndex, 0, logs[j])
-    minPlantedLogIndex = randomIndex + 1
+// random round robin planting of logs
+while (logLists.length) {
+  const logListIndex = Math.floor(Math.random() * logLists.length)
+  const logList = logLists[logListIndex]
+  const logIndex = Math.floor(Math.random() * logList.length)
+  plantedLogs.push(logList[logIndex])
+  logList.splice(logIndex, 1)
+  if (!logList.length) {
+    logLists.splice(logListIndex, 1)
   }
 }
 
