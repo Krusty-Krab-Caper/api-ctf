@@ -1,9 +1,7 @@
-import {
-  directoryRequests,
-  clientsRequests,
-  vaultRequests,
-  tokenRequests
-} from './endpointRequests'
+import { tokenRequests } from './tokenRequests'
+import { vaultRequests } from './vaultRequests'
+import { clientsRequests } from './clientRequests'
+import { directoryRequests } from './directoryRequests'
 import { teamsConvos } from './teamsConvos'
 
 const logLists = [...teamsConvos, directoryRequests, clientsRequests, vaultRequests, tokenRequests]
