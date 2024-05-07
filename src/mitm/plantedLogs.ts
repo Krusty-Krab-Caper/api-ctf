@@ -12,9 +12,8 @@ const plantedLogs: any[] = []
 while (logLists.length) {
   const logListIndex = Math.floor(Math.random() * logLists.length)
   const logList = logLists[logListIndex]
-  const logIndex = Math.floor(Math.random() * logList.length)
-  plantedLogs.push(logList[logIndex])
-  logList.splice(logIndex, 1)
+  const log = logList.shift()
+  plantedLogs.push(log)
   if (!logList.length) {
     logLists.splice(logListIndex, 1)
   }
