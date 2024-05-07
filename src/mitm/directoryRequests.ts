@@ -1,8 +1,8 @@
-import { directoryData } from '../directoryData'
+import { directoryDataByName } from '../directoryData'
 import { requestPrototype } from './requestPrototype'
 
 // Directory endpoint
-const directoryIds = Array.from(directoryData.keys())
+const directoryIds = Array.from(directoryDataByName.keys())
 const directoryRequestPrototype = {
   ...requestPrototype,
   http_request: {
