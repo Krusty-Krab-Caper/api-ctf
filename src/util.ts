@@ -10,6 +10,10 @@ export function randomToken(): string {
   return crypto.randomBytes(32).toString('hex')
 }
 
+export function chooseRandom<T>(arr: T[]): T {
+  return arr[Math.floor(Math.random() * arr.length)]
+}
+
 export function ErrorResponse(code: number, message: string) {
   return {
     code,
