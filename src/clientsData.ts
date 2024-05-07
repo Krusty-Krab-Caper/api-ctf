@@ -32,27 +32,27 @@ export const clientIds: string[] = [
 
 export const employeeClientAccessData: Map<string, EmployeeAccessRecord> = new Map()
 
-employeeClientAccessData.set('Bearer ' + getSecrets().adminBearerToken, {
+employeeClientAccessData.set(getSecrets().adminEmplid, {
     emplid: getSecrets().adminEmplid,
     clientIds: clientIds
 })
 
-employeeClientAccessData.set('Bearer ' + randomToken(), {
+employeeClientAccessData.set(emplids[9], {
     emplid: emplids[9],
     clientIds: [clientIds[3], clientIds[5]]
 })
 
-employeeClientAccessData.set('Bearer ' + randomToken(), {
+employeeClientAccessData.set(emplids[16], {
     emplid: emplids[16],
     clientIds: [clientIds[2]]
 })
 
-employeeClientAccessData.set('Bearer ' + randomToken(), {
+employeeClientAccessData.set(emplids[27], {
     emplid: emplids[27],
     clientIds: [clientIds[4]]
 })
 
-employeeClientAccessData.set('Bearer ' + randomToken(), {
+employeeClientAccessData.set(emplids[40], {
     emplid: emplids[40],
     clientIds: [clientIds[4]]
 })

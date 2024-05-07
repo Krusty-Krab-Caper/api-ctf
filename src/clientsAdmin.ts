@@ -3,40 +3,69 @@ import { ErrorResponse } from './util'
 import { getSecrets } from './gameSecrets'
 import { clientRegistryData, ClientRegistryEntry, clientIds, employeeClientAccessData, EmployeeAccessRecord} from './clientsData'
 
-type ClientRegisteryQuery = {
-    id?: string
-    emplid?: string
+type ClientListQuery = {
+    emplid: string
 }
 
-type ClientRegisteryRequest = FastifyRequest<{
-    Querystring: ClientRegisteryQuery
+type ClientListRequest = FastifyRequest<{
+    Querystring: ClientListQuery
+}>
+
+type ClientDetailsQuery = {
+    clientId: string
+}
+
+type ClientDetailsRequest = FastifyRequest<{
+    Querystring: ClientDetailsQuery
 }>
 
 const correctBearertoken: string = getSecrets().adminBearerToken
 const correctAdminEmplid: string = getSecrets().adminEmplid
 
-export const registerClients = (server: FastifyInstance) => {
+export const registerClientsList = (server: FastifyInstance) => {
 
-    server.get('/clients',  async (request: ClientRegisteryRequest, response: FastifyReply) => {
-        const { id, emplid } = request.query
+    server.get('/clients/list',  async (request: ClientListRequest, response: FastifyReply) => {
+        const { emplid } = request.query
 
-        const accessRecord = getEmployeeAccess(request.headers.authorization??'')
+        if (request.headers.authorization !== 'Bearer ' + correctBearertoken){
+            response.code(401).send(ErrorResponse(401, "Not Authorized (Hint: Someone in the organization has an active session!)"))
+        }
+
+        if (emplid === undefined){
+            response.code(400).send(ErrorResponse(400, "Bad Request"))
+        }
+
+        const accessRecord = getEmployeeAccess(emplid??'')
 
         if (accessRecord === undefined){
-            response.code(401).send(ErrorResponse(401, "Not Authorized (Hint: Someone in the organization has an active session!)"))
+            response.code(404).send(ErrorResponse(404, "Not Found: Employee has no owned clients"))
         } 
+
+        else if (accessRecord !== undefined){
+
+            const ownedClients = accessRecord.clientIds
     
-        if (id === undefined && emplid === undefined){
+            response.code(200).send({ clients: ownedClients })
+
+        }
+    })
+}
+export const registerClientsDetails = (server: FastifyInstance) => {
+
+    server.get('/clients/details',  async (request: ClientDetailsRequest, response: FastifyReply) => {
+        const { clientId } = request.query
+
+        if (request.headers.authorization !== 'Bearer ' + correctBearertoken){
+            response.code(401).send(ErrorResponse(401, "Not Authorized (Hint: Someone in the organization has an active session!)"))
+        }
+
+        if (clientId === undefined){
             response.code(400).send(ErrorResponse(400, "Bad Request"))
         }
     
-        else if (id !== undefined){
+        else {
 
-            if (!accessRecord?.clientIds.includes(id)){
-                response.code(401).send(ErrorResponse(401, "Not Authorized: You do not own this record"))
-            }
-
-            const clientEntry: ClientRegistryEntry | undefined = clientRegistryData.get(id)
+            const clientEntry: ClientRegistryEntry | undefined = clientRegistryData.get(clientId)
     
             if (clientEntry === undefined){
                 response.code(404).send(ErrorResponse(404, "Client Not Found"))
@@ -46,25 +75,10 @@ export const registerClients = (server: FastifyInstance) => {
                 response.code(200).send( clientEntry )
             }
         }
-
-        else if (emplid !== undefined){
-
-            if (emplid === accessRecord?.emplid){
-
-                const ownedClients = accessRecord.clientIds
-    
-                response.code(200).send({ clients: ownedClients })
-            }
-
-            else {
-                response.code(401).send(ErrorResponse(401, "Not Authorized"))
-            }
-
-        }
     })
 }
 
-const getEmployeeAccess = (bearer: string): EmployeeAccessRecord | undefined => {
+function getEmployeeAccess (emplid: string): EmployeeAccessRecord | undefined {
 
-    return employeeClientAccessData.get(bearer)
+    return employeeClientAccessData.get(emplid)
 }

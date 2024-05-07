@@ -2,7 +2,7 @@ import fastify from 'fastify'
 import fastifyFormbody from '@fastify/formbody'
 
 import { registerDirectory } from './directory'
-import { registerClients } from './clientsAdmin'
+import { registerClientsList, registerClientsDetails } from './clientsAdmin'
 import { registerSecrets } from './gameSecrets'
 import { ErrorResponse } from './util'
 import { getSecrets } from './gameSecrets'
@@ -15,7 +15,8 @@ const server = fastify()
 server.register(fastifyFormbody)
 
 registerDirectory(server)
-registerClients(server)
+registerClientsList(server)
+registerClientsDetails(server)
 registerMitm(server)
 registerVault(server)
 registerToken(server)
