@@ -7,7 +7,7 @@
     "init-tsc": "tsc --init",
     "dev": "npm run build && npm run start",
     "build": "rimraf ./dist && tsc",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "node ./dist/index.js"
   },
   "author": "",
