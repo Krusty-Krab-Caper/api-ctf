@@ -19,7 +19,7 @@ export const registerToken = (server: FastifyInstance) => {
         const { grant_type } = request.body
 
         if (grant_type !== 'client_credentials'){
-            response.code(400).send(ErrorResponse(400, "Bad Request: The required 'grant_type' parameter not valid (Hint: what kind of credentials are these?)"))
+            response.code(400).send(ErrorResponse(400, "Bad Request: The required 'grant_type' parameter not valid. Options are: ['client_credentials'] (Hint: try the -d flag)"))
         }
 
         if (!isValidCredentials(request.headers.authorization)){
