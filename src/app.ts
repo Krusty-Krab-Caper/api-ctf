@@ -6,10 +6,9 @@ import { ErrorResponse } from './util'
 import { registerMitm } from './mitm'
 import { registerVault } from './vault'
 import { registerToken } from './tokenEndpoint'
-import fastify from 'fastify'
+import { FastifyInstance } from 'fastify'
 
-export function build() {
-  const server = fastify()
+export function build(server: FastifyInstance): FastifyInstance {
   server.register(fastifyFormbody)
 
   registerDirectory(server)

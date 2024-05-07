@@ -1,6 +1,7 @@
+import fastify from 'fastify'
 import { build } from './app'
 
-const server = build()
+const server = build(fastify())
 
 server.listen({ port: 8080, host: '0.0.0.0' }, (err, address) => {
   if (err) {
