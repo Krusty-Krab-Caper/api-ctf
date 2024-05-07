@@ -113,700 +113,700 @@ const emplids = [
 
 export const directoryData: Map<string, DirectoryEntry> = new Map()
 
-directoryData.set(sha1('Marina Seashell'), {
+directoryData.set('Marina Seashell', {
     name: 'Marina Seashell',
     emplid: emplids[0],
     dob: '1963/11/18',
     jobTitle: 'Scrum Coach'
 })
 
-directoryData.set(sha1('Sandy Triton'), {
+directoryData.set('Sandy Triton', {
     name: 'Sandy Triton',
     emplid: emplids[1],
     dob: '1987/3/7',
     jobTitle: 'Janitor'
 })
 
-directoryData.set(sha1('Finley Triton'), {
+directoryData.set('Finley Triton', {
     name: 'Finley Triton',
     emplid: emplids[2],
     dob: '1989/8/5',
     jobTitle: 'Accountant'
 })
 
-directoryData.set(sha1('Coralie Coraline'), {
+directoryData.set('Coralie Coraline', {
     name: 'Coralie Coraline',
     emplid: emplids[3],
     dob: '1994/3/11',
     jobTitle: 'Programmer'
 })
 
-directoryData.set(sha1('Coralis Guppy'), {
+directoryData.set('Coralis Guppy', {
     name: 'Coralis Guppy',
     emplid: emplids[4],
     dob: '1966/7/3',
     jobTitle: 'Scrum Coach'
 })
 
-directoryData.set(sha1('Nemo Coralis'), {
+directoryData.set('Nemo Coralis', {
     name: 'Nemo Coralis',
     emplid: emplids[5],
     dob: '1994/8/1',
     jobTitle: 'Janitor'
 })
 
-directoryData.set(sha1('Shelly Triton'), {
+directoryData.set('Shelly Triton', {
     name: 'Shelly Triton',
     emplid: emplids[6],
     dob: '1974/3/13',
     jobTitle: 'Receptionist'
 })
 
-directoryData.set(sha1('Coralis Marina'), {
+directoryData.set('Coralis Marina', {
     name: 'Coralis Marina',
     emplid: emplids[7],
     dob: '1983/6/19',
     jobTitle: 'Security Engineer'
 })
 
-directoryData.set(sha1('Sebastian Dory'), {
+directoryData.set('Sebastian Dory', {
     name: 'Sebastian Dory',
     emplid: emplids[8],
     dob: '1972/9/24',
     jobTitle: 'Janitor'
 })
 
-directoryData.set(sha1('Finley Seashell'), {
+directoryData.set('Finley Seashell', {
     name: 'Finley Seashell',
     emplid: emplids[9],
     dob: '1963/7/19',
     jobTitle: 'Systems Designer'
 })
 
-directoryData.set(sha1('Clammy Coral'), {
+directoryData.set('Clammy Coral', {
     name: 'Clammy Coral',
     emplid: emplids[10],
     dob: '1978/8/6',
     jobTitle: 'Security Engineer'
 })
 
-directoryData.set(sha1('Clammy Coralia'), {
+directoryData.set('Clammy Coralia', {
     name: 'Clammy Coralia',
     emplid: emplids[11],
     dob: '1972/4/29',
     jobTitle: 'Receptionist'
 })
 
-directoryData.set(sha1('Finley Coraline'), {
+directoryData.set('Finley Coraline', {
     name: 'Finley Coraline',
     emplid: emplids[12],
     dob: '1976/2/22',
     jobTitle: 'Programmer'
 })
 
-directoryData.set(sha1('Sandy Coralynn'), {
+directoryData.set('Sandy Coralynn', {
     name: 'Sandy Coralynn',
     emplid: emplids[13],
     dob: '1972/10/18',
     jobTitle: 'Systems Designer'
 })
 
-directoryData.set(sha1('Bubbles Sebastian'), {
+directoryData.set('Bubbles Sebastian', {
     name: 'Bubbles Sebastian',
     emplid: emplids[14],
     dob: '1972/8/21',
     jobTitle: 'Accountant'
 })
 
-directoryData.set(sha1('Coral Coralis'), {
+directoryData.set('Coral Coralis', {
     name: 'Coral Coralis',
     emplid: emplids[15],
     dob: '1975/11/22',
     jobTitle: 'Scrum Coach'
 })
 
-directoryData.set(sha1('Coralynn Seashell'), {
+directoryData.set('Coralynn Seashell', {
     name: 'Coralynn Seashell',
     emplid: emplids[16],
     dob: '1965/1/29',
     jobTitle: 'Systems Designer'
 })
 
-directoryData.set(sha1('Clammy Coral'), {
+directoryData.set('Clammy Coral', {
     name: 'Clammy Coral',
     emplid: emplids[17],
     dob: '1965/11/28',
     jobTitle: 'Scrum Coach'
 })
 
-directoryData.set(sha1('Finley Coralyn'), {
+directoryData.set('Finley Coralyn', {
     name: 'Finley Coralyn',
     emplid: emplids[18],
     dob: '1988/3/3',
     jobTitle: 'Receptionist'
 })
 
-directoryData.set(sha1('Dory Triton'), {
+directoryData.set('Dory Triton', {
     name: 'Dory Triton',
     emplid: emplids[19],
     dob: '1975/1/29',
     jobTitle: 'Receptionist'
 })
 
-directoryData.set(sha1('Triton Pearl'), {
+directoryData.set('Triton Pearl', {
     name: 'Triton Pearl',
     emplid: emplids[20],
     dob: '1988/1/7',
     jobTitle: 'Project Manager'
 })
 
-directoryData.set(sha1('Anemone Guppy'), {
+directoryData.set('Anemone Guppy', {
     name: 'Anemone Guppy',
     emplid: emplids[21],
     dob: '1997/6/26',
     jobTitle: 'Programmer'
 })
 
-directoryData.set(sha1('Clammy Triton'), {
+directoryData.set('Clammy Triton', {
     name: 'Clammy Triton',
     emplid: emplids[22],
     dob: '1997/9/8',
     jobTitle: 'Scrum Coach'
 })
 
-directoryData.set(sha1('Sebastian Anemone'), {
+directoryData.set('Sebastian Anemone', {
     name: 'Sebastian Anemone',
     emplid: emplids[23],
     dob: '1980/8/9',
     jobTitle: 'Scrum Coach'
 })
 
-directoryData.set(sha1('Coralyn Bubbles'), {
+directoryData.set('Coralyn Bubbles', {
     name: 'Coralyn Bubbles',
     emplid: emplids[24],
     dob: '1982/3/9',
     jobTitle: 'Systems Designer'
 })
 
-directoryData.set(sha1('Flounder Coralie'), {
+directoryData.set('Flounder Coralie', {
     name: 'Flounder Coralie',
     emplid: emplids[25],
     dob: '1969/3/30',
     jobTitle: 'Accountant'
 })
 
-directoryData.set(sha1('Finley Guppy'), {
+directoryData.set('Finley Guppy', {
     name: 'Finley Guppy',
     emplid: emplids[26],
     dob: '1997/9/12',
     jobTitle: 'Programmer'
 })
 
-directoryData.set(sha1('Triton Coralyn'), {
+directoryData.set('Triton Coralyn', {
     name: 'Triton Coralyn',
     emplid: emplids[27],
     dob: '1963/8/22',
     jobTitle: 'Security Engineer'
 })
 
-directoryData.set(sha1('Bubbles Coralyn'), {
+directoryData.set('Bubbles Coralyn', {
     name: 'Bubbles Coralyn',
     emplid: emplids[28],
     dob: '1989/10/25',
     jobTitle: 'Receptionist'
 })
 
-directoryData.set(sha1('Coralynn Clammy'), {
+directoryData.set('Coralynn Clammy', {
     name: 'Coralynn Clammy',
     emplid: emplids[29],
     dob: '1969/1/3',
     jobTitle: 'Janitor'
 })
 
-directoryData.set(sha1('Coral Coralyn'), {
+directoryData.set('Coral Coralyn', {
     name: 'Coral Coralyn',
     emplid: emplids[30],
     dob: '1969/11/23',
     jobTitle: 'Receptionist'
 })
 
-directoryData.set(sha1('Barnacle Coraline'), {
+directoryData.set('Barnacle Coraline', {
     name: 'Barnacle Coraline',
     emplid: emplids[31],
     dob: '1961/1/3',
     jobTitle: 'Project Manager'
 })
 
-directoryData.set(sha1('Sebastian Coralis'), {
+directoryData.set('Sebastian Coralis', {
     name: 'Sebastian Coralis',
     emplid: emplids[32],
     dob: '1972/9/12',
     jobTitle: 'Receptionist'
 })
 
-directoryData.set(sha1('Marina Nemo'), {
+directoryData.set('Marina Nemo', {
     name: 'Marina Nemo',
     emplid: emplids[33],
     dob: '1968/4/20',
     jobTitle: 'Project Manager'
 })
 
-directoryData.set(sha1('Sandy Coralia'), {
+directoryData.set('Sandy Coralia', {
     name: 'Sandy Coralia',
     emplid: emplids[34],
     dob: '1984/4/5',
     jobTitle: 'Janitor'
 })
 
-directoryData.set(sha1('Marina Finley'), {
+directoryData.set('Marina Finley', {
     name: 'Marina Finley',
     emplid: emplids[35],
     dob: '1970/11/7',
     jobTitle: 'Janitor'
 })
 
-directoryData.set(sha1('Seaweed Pearl'), {
+directoryData.set('Seaweed Pearl', {
     name: 'Seaweed Pearl',
     emplid: emplids[36],
     dob: '1986/8/2',
     jobTitle: 'Systems Designer'
 })
 
-directoryData.set(sha1('Triton Bubbles'), {
+directoryData.set('Triton Bubbles', {
     name: 'Triton Bubbles',
     emplid: emplids[37],
     dob: '1999/7/3',
     jobTitle: 'Project Manager'
 })
 
-directoryData.set(sha1('Coralio Flounder'), {
+directoryData.set('Coralio Flounder', {
     name: 'Coralio Flounder',
     emplid: getSecrets().adminEmplid,
     dob: '1964/7/20',
     jobTitle: 'Systems Administrator'
 })
 
-directoryData.set(sha1('Coralia Sebastian'), {
+directoryData.set('Coralia Sebastian', {
     name: 'Coralia Sebastian',
     emplid: emplids[39],
     dob: '1970/1/10',
     jobTitle: 'Janitor'
 })
 
-directoryData.set(sha1('Guppy Shelly'), {
+directoryData.set('Guppy Shelly', {
     name: 'Guppy Shelly',
     emplid: emplids[40],
     dob: '1994/10/10',
     jobTitle: 'Security Engineer'
 })
 
-directoryData.set(sha1('Guppy Squidward'), {
+directoryData.set('Guppy Squidward', {
     name: 'Guppy Squidward',
     emplid: emplids[41],
     dob: '1960/5/15',
     jobTitle: 'Programmer'
 })
 
-directoryData.set(sha1('Nemo Flounder'), {
+directoryData.set('Nemo Flounder', {
     name: 'Nemo Flounder',
     emplid: emplids[42],
     dob: '1987/1/29',
     jobTitle: 'Project Manager'
 })
 
-directoryData.set(sha1('Finley Coralyn'), {
+directoryData.set('Finley Coralyn', {
     name: 'Finley Coralyn',
     emplid: emplids[43],
     dob: '1994/10/5',
     jobTitle: 'Security Engineer'
 })
 
-directoryData.set(sha1('Dory Seaweed'), {
+directoryData.set('Dory Seaweed', {
     name: 'Dory Seaweed',
     emplid: emplids[44],
     dob: '1961/8/11',
     jobTitle: 'Janitor'
 })
 
-directoryData.set(sha1('Seaweed Seaweed'), {
+directoryData.set('Seaweed Seaweed', {
     name: 'Seaweed Seaweed',
     emplid: emplids[45],
     dob: '1974/7/10',
     jobTitle: 'Accountant'
 })
 
-directoryData.set(sha1('Pearl Seashell'), {
+directoryData.set('Pearl Seashell', {
     name: 'Pearl Seashell',
     emplid: emplids[46],
     dob: '1985/8/22',
     jobTitle: 'Project Manager'
 })
 
-directoryData.set(sha1('Coralis Pearl'), {
+directoryData.set('Coralis Pearl', {
     name: 'Coralis Pearl',
     emplid: emplids[47],
     dob: '1972/3/18',
     jobTitle: 'Programmer'
 })
 
-directoryData.set(sha1('Seaweed Dory'), {
+directoryData.set('Seaweed Dory', {
     name: 'Seaweed Dory',
     emplid: emplids[48],
     dob: '1985/7/30',
     jobTitle: 'Programmer'
 })
 
-directoryData.set(sha1('Shelly Coralynn'), {
+directoryData.set('Shelly Coralynn', {
     name: 'Shelly Coralynn',
     emplid: emplids[49],
     dob: '1971/6/5',
     jobTitle: 'Janitor'
 })
 
-directoryData.set(sha1('Coralia Bubbles'), {
+directoryData.set('Coralia Bubbles', {
     name: 'Coralia Bubbles',
     emplid: emplids[50],
     dob: '1972/3/3',
     jobTitle: 'Receptionist'
 })
 
-directoryData.set(sha1('Coralie Coralynn'), {
+directoryData.set('Coralie Coralynn', {
     name: 'Coralie Coralynn',
     emplid: emplids[51],
     dob: '1979/1/22',
     jobTitle: 'Security Engineer'
 })
 
-directoryData.set(sha1('Nemo Seaweed'), {
+directoryData.set('Nemo Seaweed', {
     name: 'Nemo Seaweed',
     emplid: emplids[52],
     dob: '1992/2/17',
     jobTitle: 'Janitor'
 })
 
-directoryData.set(sha1('Seaweed Flounder'), {
+directoryData.set('Seaweed Flounder', {
     name: 'Seaweed Flounder',
     emplid: emplids[53],
     dob: '1990/9/12',
     jobTitle: 'Accountant'
 })
 
-directoryData.set(sha1('Guppy Barnacle'), {
+directoryData.set('Guppy Barnacle', {
     name: 'Guppy Barnacle',
     emplid: emplids[54],
     dob: '1976/10/26',
     jobTitle: 'Programmer'
 })
 
-directoryData.set(sha1('Squidward Sebastian'), {
+directoryData.set('Squidward Sebastian', {
     name: 'Squidward Sebastian',
     emplid: emplids[55],
     dob: '1981/2/9',
     jobTitle: 'Scrum Coach'
 })
 
-directoryData.set(sha1('Barnacle Dory'), {
+directoryData.set('Barnacle Dory', {
     name: 'Barnacle Dory',
     emplid: emplids[56],
     dob: '1984/5/9',
     jobTitle: 'Receptionist'
 })
 
-directoryData.set(sha1('Anemone Squidward'), {
+directoryData.set('Anemone Squidward', {
     name: 'Anemone Squidward',
     emplid: emplids[57],
     dob: '1998/2/14',
     jobTitle: 'Receptionist'
 })
 
-directoryData.set(sha1('Coral Nemo'), {
+directoryData.set('Coral Nemo', {
     name: 'Coral Nemo',
     emplid: emplids[58],
     dob: '1985/11/28',
     jobTitle: 'Security Engineer'
 })
 
-directoryData.set(sha1('Seaweed Bubbles'), {
+directoryData.set('Seaweed Bubbles', {
     name: 'Seaweed Bubbles',
     emplid: emplids[59],
     dob: '1988/10/16',
     jobTitle: 'Systems Designer'
 })
 
-directoryData.set(sha1('Seashell Finley'), {
+directoryData.set('Seashell Finley', {
     name: 'Seashell Finley',
     emplid: emplids[60],
     dob: '1978/4/5',
     jobTitle: 'Systems Designer'
 })
 
-directoryData.set(sha1('Seaweed Bubbles'), {
+directoryData.set('Seaweed Bubbles', {
     name: 'Seaweed Bubbles',
     emplid: emplids[61],
     dob: '1982/7/13',
     jobTitle: 'Scrum Coach'
 })
 
-directoryData.set(sha1('Guppy Guppy'), {
+directoryData.set('Guppy Guppy', {
     name: 'Guppy Guppy',
     emplid: emplids[62],
     dob: '1984/9/27',
     jobTitle: 'Project Manager'
 })
 
-directoryData.set(sha1('Coralio Finley'), {
+directoryData.set('Coralio Finley', {
     name: 'Coralio Finley',
     emplid: emplids[63],
     dob: '1969/4/22',
     jobTitle: 'Accountant'
 })
 
-directoryData.set(sha1('Anemone Coralis'), {
+directoryData.set('Anemone Coralis', {
     name: 'Anemone Coralis',
     emplid: emplids[64],
     dob: '1998/11/17',
     jobTitle: 'Security Engineer'
 })
 
-directoryData.set(sha1('Clammy Bubbles'), {
+directoryData.set('Clammy Bubbles', {
     name: 'Clammy Bubbles',
     emplid: emplids[65],
     dob: '1987/8/4',
     jobTitle: 'Receptionist'
 })
 
-directoryData.set(sha1('Coralynn Anemone'), {
+directoryData.set('Coralynn Anemone', {
     name: 'Coralynn Anemone',
     emplid: emplids[66],
     dob: '1973/7/1',
     jobTitle: 'Receptionist'
 })
 
-directoryData.set(sha1('Coralio Coralyn'), {
+directoryData.set('Coralio Coralyn', {
     name: 'Coralio Coralyn',
     emplid: emplids[67],
     dob: '1997/7/14',
     jobTitle: 'Scrum Coach'
 })
 
-directoryData.set(sha1('Shelly Sandy'), {
+directoryData.set('Shelly Sandy', {
     name: 'Shelly Sandy',
     emplid: emplids[68],
     dob: '1966/10/30',
     jobTitle: 'Project Manager'
 })
 
-directoryData.set(sha1('Pearl Coraline'), {
+directoryData.set('Pearl Coraline', {
     name: 'Pearl Coraline',
     emplid: emplids[69],
     dob: '1965/4/2',
     jobTitle: 'Security Engineer'
 })
 
-directoryData.set(sha1('Finley Barnacle'), {
+directoryData.set('Finley Barnacle', {
     name: 'Finley Barnacle',
     emplid: emplids[70],
     dob: '1973/7/3',
     jobTitle: 'Security Engineer'
 })
 
-directoryData.set(sha1('Coraline Coralyn'), {
+directoryData.set('Coraline Coralyn', {
     name: 'Coraline Coralyn',
     emplid: emplids[71],
     dob: '1999/8/11',
     jobTitle: 'Scrum Coach'
 })
 
-directoryData.set(sha1('Barnacle Coralia'), {
+directoryData.set('Barnacle Coralia', {
     name: 'Barnacle Coralia',
     emplid: emplids[72],
     dob: '1992/4/4',
     jobTitle: 'Receptionist'
 })
 
-directoryData.set(sha1('Clammy Anemone'), {
+directoryData.set('Clammy Anemone', {
     name: 'Clammy Anemone',
     emplid: emplids[73],
     dob: '1966/10/24',
     jobTitle: 'Scrum Coach'
 })
 
-directoryData.set(sha1('Coralia Coralio'), {
+directoryData.set('Coralia Coralio', {
     name: 'Coralia Coralio',
     emplid: emplids[74],
     dob: '1964/2/6',
     jobTitle: 'Scrum Coach'
 })
 
-directoryData.set(sha1('Coralio Coral'), {
+directoryData.set('Coralio Coral', {
     name: 'Coralio Coral',
     emplid: emplids[75],
     dob: '1965/1/2',
     jobTitle: 'Janitor'
 })
 
-directoryData.set(sha1('Coralie Coralis'), {
+directoryData.set('Coralie Coralis', {
     name: 'Coralie Coralis',
     emplid: emplids[76],
     dob: '1999/10/11',
     jobTitle: 'Scrum Coach'
 })
 
-directoryData.set(sha1('Guppy Barnacle'), {
+directoryData.set('Guppy Barnacle', {
     name: 'Guppy Barnacle',
     emplid: emplids[77],
     dob: '1998/8/19',
     jobTitle: 'Security Engineer'
 })
 
-directoryData.set(sha1('Anemone Seaweed'), {
+directoryData.set('Anemone Seaweed', {
     name: 'Anemone Seaweed',
     emplid: emplids[78],
     dob: '1987/2/28',
     jobTitle: 'Accountant'
 })
 
-directoryData.set(sha1('Coralyn Coralynn'), {
+directoryData.set('Coralyn Coralynn', {
     name: 'Coralyn Coralynn',
     emplid: emplids[79],
     dob: '1960/6/1',
     jobTitle: 'Programmer'
 })
 
-directoryData.set(sha1('Coral Coralie'), {
+directoryData.set('Coral Coralie', {
     name: 'Coral Coralie',
     emplid: emplids[80],
     dob: '1967/6/26',
     jobTitle: 'Scrum Coach'
 })
 
-directoryData.set(sha1('Flounder Clammy'), {
+directoryData.set('Flounder Clammy', {
     name: 'Flounder Clammy',
     emplid: emplids[81],
     dob: '1979/2/6',
     jobTitle: 'Project Manager'
 })
 
-directoryData.set(sha1('Marina Coraline'), {
+directoryData.set('Marina Coraline', {
     name: 'Marina Coraline',
     emplid: emplids[82],
     dob: '1971/9/9',
     jobTitle: 'Security Engineer'
 })
 
-directoryData.set(sha1('Barnacle Marina'), {
+directoryData.set('Barnacle Marina', {
     name: 'Barnacle Marina',
     emplid: emplids[83],
     dob: '1968/8/14',
     jobTitle: 'Systems Designer'
 })
 
-directoryData.set(sha1('Sandy Dory'), {
+directoryData.set('Sandy Dory', {
     name: 'Sandy Dory',
     emplid: emplids[84],
     dob: '1994/10/7',
     jobTitle: 'Janitor'
 })
 
-directoryData.set(sha1('Clammy Coralis'), {
+directoryData.set('Clammy Coralis', {
     name: 'Clammy Coralis',
     emplid: emplids[85],
     dob: '1964/2/12',
     jobTitle: 'Security Engineer'
 })
 
-directoryData.set(sha1('Coralio Coraline'), {
+directoryData.set('Coralio Coraline', {
     name: 'Coralio Coraline',
     emplid: emplids[86],
     dob: '1960/5/26',
     jobTitle: 'Receptionist'
 })
 
-directoryData.set(sha1('Marina Barnacle'), {
+directoryData.set('Marina Barnacle', {
     name: 'Marina Barnacle',
     emplid: emplids[87],
     dob: '1974/5/2',
     jobTitle: 'Security Engineer'
 })
 
-directoryData.set(sha1('Coraline Anemone'), {
+directoryData.set('Coraline Anemone', {
     name: 'Coraline Anemone',
     emplid: emplids[88],
     dob: '1971/8/17',
     jobTitle: 'Receptionist'
 })
 
-directoryData.set(sha1('Anemone Anemone'), {
+directoryData.set('Anemone Anemone', {
     name: 'Anemone Anemone',
     emplid: emplids[89],
     dob: '1968/1/4',
     jobTitle: 'Janitor'
 })
 
-directoryData.set(sha1('Barnacle Coralia'), {
+directoryData.set('Barnacle Coralia', {
     name: 'Barnacle Coralia',
     emplid: emplids[90],
     dob: '1993/9/12',
     jobTitle: 'Scrum Coach'
 })
 
-directoryData.set(sha1('Coralynn Seaweed'), {
+directoryData.set('Coralynn Seaweed', {
     name: 'Coralynn Seaweed',
     emplid: emplids[91],
     dob: '1977/5/1',
     jobTitle: 'Scrum Coach'
 })
 
-directoryData.set(sha1('Coralie Seashell'), {
+directoryData.set('Coralie Seashell', {
     name: 'Coralie Seashell',
     emplid: emplids[92],
     dob: '1989/1/23',
     jobTitle: 'Programmer'
 })
 
-directoryData.set(sha1('Barnacle Pearl'), {
+directoryData.set('Barnacle Pearl', {
     name: 'Barnacle Pearl',
     emplid: emplids[93],
     dob: '1997/5/15',
     jobTitle: 'Project Manager'
 })
 
-directoryData.set(sha1('Coralyn Coralyn'), {
+directoryData.set('Coralyn Coralyn', {
     name: 'Coralyn Coralyn',
     emplid: emplids[94],
     dob: '1964/10/13',
     jobTitle: 'Programmer'
 })
 
-directoryData.set(sha1('Marina Coralia'), {
+directoryData.set('Marina Coralia', {
     name: 'Marina Coralia',
     emplid: emplids[95],
     dob: '1965/11/17',
     jobTitle: 'Systems Designer'
 })
 
-directoryData.set(sha1('Coralyn Nemo'), {
+directoryData.set('Coralyn Nemo', {
     name: 'Coralyn Nemo',
     emplid: emplids[96],
     dob: '1978/6/7',
     jobTitle: 'Security Engineer'
 })
 
-directoryData.set(sha1('Marina Shelly'), {
+directoryData.set('Marina Shelly', {
     name: 'Marina Shelly',
     emplid: emplids[97],
     dob: '1970/3/1',
     jobTitle: 'Scrum Coach'
 })
 
-directoryData.set(sha1('Coralie Anemone'), {
+directoryData.set('Coralie Anemone', {
     name: 'Coralie Anemone',
     emplid: emplids[98],
     dob: '1976/11/16',
     jobTitle: 'Accountant'
 })
 
-directoryData.set(sha1('Squidward Sebastian'), {
+directoryData.set('Squidward Sebastian', {
     name: 'Squidward Sebastian',
     emplid: emplids[99],
     dob: '1986/8/25',
