@@ -5,11 +5,11 @@ import { getSecrets } from '../gameSecrets'
 
 const secrets = getSecrets()
 
-const redHerringTokens = Array.from(employeeClientAccessData.keys()).filter(
-  (token) => token !== secrets.adminBearerToken
+const redHerringEmplids = Array.from(employeeClientAccessData.keys()).filter(
+  (emplid) => emplid !== secrets.adminEmplid
 )
 
-export const targetClientRequest = {
+const targetClientRequest = {
   ...requestPrototype,
   http_request: {
     ...requestPrototype.http_request,
@@ -38,9 +38,9 @@ const clientsRequestPrototype = {
       ...requestPrototype.http_request.headers,
       authorization: 'Bearer ' + randomToken()
     },
-    path: '/clients',
+    path: '/clients/details',
     method: 'GET',
-    query: 'id=' + clientIds[0]
+    query: 'clientId=' + clientIds[0]
   },
   http_response: {
     ...requestPrototype.http_response,
@@ -51,16 +51,16 @@ const clientsRequestPrototype = {
 
 const redHerringBadRequest = { ...clientsRequestPrototype }
 
-const redHerringEmplidRequests = redHerringTokens.map((token) => ({
+const redHerringEmplidRequests = redHerringEmplids.map((token) => ({
   ...requestPrototype,
   http_request: {
     ...requestPrototype.http_request,
     headers: {
       ...requestPrototype.http_request.headers,
-      authorization: token
+      authorization: 'Bearer ' + secrets.adminBearerToken
     },
     method: 'GET',
-    path: '/clients',
+    path: '/clients/list',
     query: 'emplid=' + employeeClientAccessData.get(token)?.emplid
   },
   http_response: {
@@ -70,17 +70,17 @@ const redHerringEmplidRequests = redHerringTokens.map((token) => ({
   }
 }))
 
-const redHerringClientIdRequests = redHerringTokens.map((token) => ({
+const redHerringClientIdRequests = redHerringEmplids.map((emplid) => ({
   ...requestPrototype,
   http_request: {
     ...requestPrototype.http_request,
     headers: {
       ...requestPrototype.http_request.headers,
-      authorization: token
+      authorization: 'Bearer ' + secrets.adminBearerToken
     },
     method: 'GET',
-    path: '/clients',
-    query: 'id=' + chooseRandom(employeeClientAccessData.get(token)?.clientIds ?? [])
+    path: '/clients/details',
+    query: 'clientId=' + chooseRandom(employeeClientAccessData.get(emplid)?.clientIds ?? [])
   },
   http_response: {
     ...requestPrototype.http_response,
@@ -90,7 +90,7 @@ const redHerringClientIdRequests = redHerringTokens.map((token) => ({
 }))
 
 export const clientsRequests = [
-  targetClientRequest,
+  // targetClientRequest,
   redHerringBadRequest,
   ...redHerringEmplidRequests,
   ...redHerringClientIdRequests
