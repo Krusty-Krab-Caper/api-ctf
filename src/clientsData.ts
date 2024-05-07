@@ -1,3 +1,5 @@
+import { getSecrets } from "./gameSecrets"
+
 
 export type ClientRegistryEntry = {
     clientId: string
@@ -7,6 +9,11 @@ export type ClientRegistryEntry = {
 export type ClientCredentialPair = {
     clientId: string
     secret: string
+}
+
+export type EmployeeAccessRecord = {
+    emplid: string,
+    clientIds: string[]
 }
 
 export const clientIds: string[] = [
@@ -21,6 +28,14 @@ export const clientIds: string[] = [
     '169c8487063994fa737181358d1a63edac548259',
     '3f3af70ac4f5e17606975a442c6eec24e3c28be9',
 ]
+
+export const employeeClientAccessData: Map<string, EmployeeAccessRecord> = new Map()
+
+employeeClientAccessData.set(getSecrets().adminBearerToken, {
+    emplid: getSecrets().adminEmplid,
+    clientIds: clientIds
+})
+
 
 const clientSecrets: string[] = [
     '5d76c46026da28224b856c8d1170c91c065b2870',
