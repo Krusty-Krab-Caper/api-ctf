@@ -8,6 +8,7 @@ const tokenTeams1 = randomToken()
 const tokenTeams2 = randomToken()
 const tokenTeams3 = randomToken()
 const tokenTeams4 = randomToken()
+
 // convo between leaked-site team lead (2) and employee (1). 2 asks 1 to submit a PR. 1 submits the PR and asks 2 to approve it. 2 approves it and asks 1 to merge it. 1 merges it and realizes they pushed credentials. 1 asks 2 if they should delete the credentials. 2 says to submit another PR that deletes them. 1 asks if the history will still show the credentials. 2 says it should be fine. 1 submits the PR. 2 thanks 1.
 const teamsConvo1and2Messages = [
   {
@@ -52,6 +53,7 @@ const teamsConvo1and2Messages = [
     message: 'Sounds good. Thanks for catching that.'
   }
 ]
+
 // convo between management (3) and leaked-site team lead (2). 3 asks 2 to remind him the link of the leaked-site repo (there is a believable reason for this, like needing to share it with a new team member). 2 sends the link. 3 thanks 2.
 const teamsConvo2and3Messages = [
   {
@@ -102,12 +104,24 @@ const teamsConvo1and4Messages = [
     message: "A new Kelp Shake? Count me in! That sounds like a fun night. Let's do it!"
   }
 ]
-const teamsConvo1and2 = teamsConvo1and2Messages.map((message) => ({
+
+const teamsConvoRequestPrototype = {
   ...requestPrototype,
   http_request: {
     ...requestPrototype.http_request,
+    host: 'teams.com',
+    method: 'POST',
+    query: ''
+  },
+  msg: 'completed handling request'
+}
+
+const teamsConvo1and2 = teamsConvo1and2Messages.map((message) => ({
+  ...teamsConvoRequestPrototype,
+  http_request: {
+    ...teamsConvoRequestPrototype.http_request,
     headers: {
-      ...requestPrototype.http_request.headers,
+      ...teamsConvoRequestPrototype.http_request.headers,
       authorization: 'Bearer ' + message.token
     },
     path: '/conversation/6298237955',
@@ -119,12 +133,13 @@ const teamsConvo1and2 = teamsConvo1and2Messages.map((message) => ({
   },
   msg: 'completed handling request'
 }))
+
 const teamsConvo2and3 = teamsConvo2and3Messages.map((message) => ({
-  ...requestPrototype,
+  ...teamsConvoRequestPrototype,
   http_request: {
-    ...requestPrototype.http_request,
+    ...teamsConvoRequestPrototype.http_request,
     headers: {
-      ...requestPrototype.http_request.headers,
+      ...teamsConvoRequestPrototype.http_request.headers,
       authorization: 'Bearer ' + message.token
     },
     path: '/conversation/2349573492',
@@ -136,12 +151,13 @@ const teamsConvo2and3 = teamsConvo2and3Messages.map((message) => ({
   },
   msg: 'completed handling request'
 }))
+
 const teamsConvo1and4 = teamsConvo1and4Messages.map((message) => ({
-  ...requestPrototype,
+  ...teamsConvoRequestPrototype,
   http_request: {
-    ...requestPrototype.http_request,
+    ...teamsConvoRequestPrototype.http_request,
     headers: {
-      ...requestPrototype.http_request.headers,
+      ...teamsConvoRequestPrototype.http_request.headers,
       authorization: 'Bearer ' + message.token
     },
     path: '/conversation/7329584520',
