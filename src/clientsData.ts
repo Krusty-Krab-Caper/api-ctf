@@ -32,7 +32,7 @@ export const clientIds: string[] = [
 
 export const employeeClientAccessData: Map<string, EmployeeAccessRecord> = new Map()
 
-employeeClientAccessData.set(getSecrets().adminBearerToken, {
+employeeClientAccessData.set('Bearer ' + getSecrets().adminBearerToken, {
     emplid: getSecrets().adminEmplid,
     clientIds: clientIds
 })

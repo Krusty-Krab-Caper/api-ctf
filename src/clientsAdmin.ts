@@ -1,7 +1,7 @@
 import { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify'
 import { ErrorResponse } from './util'
 import { getSecrets } from './gameSecrets'
-import { clientRegistryData, ClientRegistryEntry, clientIds } from './clientsData'
+import { clientRegistryData, ClientRegistryEntry, clientIds, employeeClientAccessData, EmployeeAccessRecord} from './clientsData'
 
 type ClientRegisteryQuery = {
     id?: string
@@ -20,7 +20,9 @@ export const registerClients = (server: FastifyInstance) => {
     server.get('/clients',  async (request: ClientRegisteryRequest, response: FastifyReply) => {
         const { id, emplid } = request.query
 
-        if (request.headers.authorization !== 'Bearer ' + correctBearertoken){
+        const accessRecord = getEmployeeAccess(request.headers.authorization??'')
+
+        if (accessRecord === undefined){
             response.code(401).send(ErrorResponse(401, "Not Authorized (Hint: Someone in the organization has an active session!)"))
         } 
     
@@ -29,6 +31,10 @@ export const registerClients = (server: FastifyInstance) => {
         }
     
         else if (id !== undefined){
+
+            if (!accessRecord?.clientIds.includes(id)){
+                response.code(401).send(ErrorResponse(401, "Not Authorized: You do not own this record"))
+            }
 
             const clientEntry: ClientRegistryEntry | undefined = clientRegistryData.get(id)
     
@@ -41,9 +47,24 @@ export const registerClients = (server: FastifyInstance) => {
             }
         }
 
-        else if (emplid === correctAdminEmplid){
+        else if (emplid !== undefined){
 
-            response.code(200).send({ clients: clientIds })
+            if (emplid === accessRecord?.emplid){
+
+                const ownedClients = accessRecord.clientIds
+    
+                response.code(200).send({ clients: ownedClients })
+            }
+
+            else {
+                response.code(401).send(ErrorResponse(401, "Not Authorized"))
+            }
+
         }
     })
+}
+
+const getEmployeeAccess = (bearer: string): EmployeeAccessRecord | undefined => {
+
+    return employeeClientAccessData.get(bearer)
 }
