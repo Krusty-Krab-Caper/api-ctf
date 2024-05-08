@@ -8,6 +8,7 @@ import { ErrorResponse } from './util'
 import { registerMitm } from './mitm'
 import { registerVault } from './vault'
 import { registerToken } from './tokenEndpoint'
+import { registerChat, registerConversation } from './chatEndpoint'
 
 const server = fastify()
 
@@ -19,6 +20,9 @@ registerClientsDetails(server)
 registerMitm(server)
 registerVault(server)
 registerToken(server)
+
+registerChat(server)
+registerConversation(server)
 
 registerSecrets(server)
 
