@@ -1,8 +1,9 @@
 const readline = require('readline')
 
 const host = 'http://localhost:8080'
+const initializeConversationEndpoint = `${host}/conversation`
 const chatEndpoint = `${host}/chat`
-const resetChatEndpoint = `${host}/chat/reset`
+const resetChatEndpoint = `${host}/conversation`
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -16,7 +17,22 @@ function startChat() {
   })
 }
 
+async function initializeConversation(recipient) {
+  const response = await fetch(initializeConversationEndpoint, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      recipient
+    })
+  })
+  const json = await response.json()
+  return json.conversationId
+}
+
 async function chatInterface(recipient) {
+  let conversationId = await initializeConversation(recipient)
   console.log(
     '\nChat started. At any time, type "#exit" to end the chat, or type "#reset" to reset the chat.\n'
   )
@@ -35,37 +51,43 @@ async function chatInterface(recipient) {
 
     if (message.toLowerCase() === '#reset') {
       console.log('Resetting chat...')
-      await resetChat()
+      await deleteConversation(conversationId)
+      conversationId = await initializeConversation(recipient)
       console.log('Chat reset.')
       continue
     }
 
     try {
-      const response = await sendMessage(recipient, message)
-      console.log(`${recipient} > ${response.data}`)
+      const response = await sendMessage(conversationId, message)
+      console.log(`${recipient} > ${response}`)
     } catch (error) {
       console.error('Error sending message:', error)
     }
   }
 }
 
-function resetChat() {
+async function deleteConversation(conversationId) {
   return fetch(resetChatEndpoint, {
-    method: 'POST'
+    method: 'DELETE',
+    body: JSON.stringify({
+      conversationId
+    })
   })
 }
 
-function sendMessage(recipient, message) {
-  return fetch(chatEndpoint, {
+async function sendMessage(conversationId, message) {
+  const response = await fetch(chatEndpoint, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      recipient,
+      conversationId,
       message
     })
   })
+  const json = await response.json()
+  return json.message
 }
 
 startChat()
