@@ -1,12 +1,10 @@
 import { randomToken } from '../util'
 import { clientCredentials } from '../clientsData'
-import { requestPrototype } from './requestPrototype'
+import { RequestLog, generateRequest, requestPrototype } from './requestPrototype'
 
 // Token endpoint
-const tokenRequestPrototype = {
-  ...requestPrototype,
+const tokenRequestDefault: RequestLog = generateRequest({
   http_request: {
-    ...requestPrototype.http_request,
     path: '/token',
     method: 'POST',
     query: '',
@@ -14,43 +12,39 @@ const tokenRequestPrototype = {
       grant_type: 'client_credentials'
     }
   }
-}
+})
+
+const realIdSecretPair = Buffer.from(
+  clientCredentials[0].clientId + ':' + clientCredentials[0].secret
+).toString('base64')
+
 const clientIdLength = clientCredentials[0].clientId.length
 const clientSecretLength = clientCredentials[0].secret.length
-export const tokenRequests = [
+const fakeIdSecretPair = Buffer.from(
+  randomToken().substring(0, clientIdLength) + ':' + randomToken().substring(0, clientSecretLength)
+).toString('base64')
+
+const partialTokenRequests = [
   {
-    ...tokenRequestPrototype,
     http_request: {
-      ...tokenRequestPrototype.http_request,
       headers: {
-        ...tokenRequestPrototype.http_request.headers,
-        authorization:
-          'Basic ' +
-          Buffer.from(clientCredentials[0].clientId + ':' + clientCredentials[0].secret).toString(
-            'base64'
-          )
+        authorization: 'Basic ' + realIdSecretPair
       }
     }
   },
   {
-    ...tokenRequestPrototype,
     http_request: {
-      ...tokenRequestPrototype.http_request,
       headers: {
-        ...tokenRequestPrototype.http_request.headers,
-        authorization:
-          'Basic ' +
-          Buffer.from(
-            randomToken().substring(0, clientIdLength) +
-              ':' +
-              randomToken().substring(0, clientSecretLength)
-          ).toString('base64')
+        authorization: 'Basic ' + fakeIdSecretPair
       }
     },
     http_response: {
-      ...requestPrototype.http_response,
       status: 401,
       text_status: 'Unauthorized'
     }
   }
-].sort(() => Math.random() - 0.5)
+]
+
+export const tokenRequests = partialTokenRequests
+  .map((partial) => generateRequest(partial, tokenRequestDefault))
+  .sort(() => Math.random() - 0.5)
