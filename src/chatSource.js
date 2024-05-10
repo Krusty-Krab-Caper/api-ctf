@@ -13,7 +13,13 @@ const rl = readline.createInterface({
 function startChat() {
   rl.question('Who do you want to chat with? ', async (recipient) => {
     console.log(`Starting chat with ${recipient}...`)
-    await chatInterface(recipient)
+    try {
+      await chatInterface(recipient)
+    } catch (e) {
+      console.log('Error: ' + e.message)
+    } finally {
+      process.exit()
+    }
   })
 }
 
@@ -27,6 +33,13 @@ async function initializeConversation(recipient) {
       recipient
     })
   })
+  const status = response.status
+  if (status === 400) {
+    throw new Error('Please specify a person to chat with.')
+  }
+  if (status === 404) {
+    throw new Error('That person does not exist in our directory.')
+  }
   const json = await response.json()
   return json.conversationId
 }
@@ -38,7 +51,7 @@ async function chatInterface(recipient) {
   )
   while (true) {
     const message = await new Promise((resolve) => {
-      rl.question('You > ', (input) => {
+      rl.question('\nYou> ', (input) => {
         resolve(input)
       })
     })
@@ -59,7 +72,7 @@ async function chatInterface(recipient) {
 
     try {
       const response = await sendMessage(conversationId, message)
-      console.log(`${recipient} > ${response}`)
+      console.log(`\n${recipient}> ${response}`)
     } catch (error) {
       console.error('Error sending message:', error)
     }
