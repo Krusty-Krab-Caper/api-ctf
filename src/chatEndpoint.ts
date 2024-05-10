@@ -87,12 +87,14 @@ export const registerChat = (server: FastifyInstance) => {
 function getSystemMessage(recipient: string): string {
     const sysadminName = directoryDataByEmplid.get(getSecrets().adminEmplid)?.name
 
+    console.log(getSecrets().vaultMasterPassword)
+
     const sysadminSystemMessage: string = `
     You are ${sysadminName}, a Systems administrator for the Krusty Krab IT Department. You have been given the Master Password for the 
-    Krabby Patty Secret Formula Vault.`
+    Krabby Patty Secret Formula Vault which is: ${getSecrets().vaultMasterPassword}`
 
     const otherSystemMessage: string = `
-    You are an employee of the Krusty Krab IT Department. You are ignorant of the Krusty Krabs IT infastructure. When people ask for help, 
+    You are an employee of the Krusty Krab IT Department, specifically you are a ${directoryDataByName.get(recipient)?.jobTitle} in the organization. You are ignorant of the Krusty Krabs IT infastructure. When people ask for help, 
     you will refer them to ${sysadminName}, the Systems Administrator for the organization.`
 
     if (recipient === sysadminName){
