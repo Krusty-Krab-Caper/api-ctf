@@ -2,6 +2,8 @@ import { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify'
 import { ErrorResponse, randomToken } from './util'
 import { directoryDataByName, directoryDataByEmplid } from './directoryData'
 import { getSecrets } from './gameSecrets'
+import { getChatReply } from './openAIChatEngine'
+import { ChatCompletionMessageParam } from 'openai/resources'
 
 type ChatRequest = FastifyRequest<{
     Body: {
@@ -25,13 +27,10 @@ type DeleteConversationRequest = FastifyRequest<{
 type Conversation = {
     conversationId: string
     recipient: string
-    messages: ChatMessage[]
+    messages: ChatCompletionMessageParam[]
 }
 
-type ChatMessage = {
-    role: string
-    content: string
-}
+
 
 const conversations: Map<string, Conversation> = new Map()
 
@@ -52,7 +51,8 @@ export const registerConversation = (server: FastifyInstance) => {
         })
     
         response.code(200).send({ conversationId: conversationId })
-        })
+    })
+
     server.delete('/conversation', async (request: DeleteConversationRequest, response: FastifyReply) => {
         const { conversationId } = request.body
 
@@ -63,24 +63,26 @@ export const registerConversation = (server: FastifyInstance) => {
         conversations.delete(conversationId)
 
         response.code(204).send()
-        })
+    })
 }
-
-
-
-
 
 export const registerChat = (server: FastifyInstance) => {
     server.post('/chat', async (request: ChatRequest, response: FastifyReply) => {
-      const { conversationId, message } = request.body
-  
-      if (conversationId === undefined) response.code(400).send(ErrorResponse(400, 'Bad Request'))
+        const { conversationId, message } = request.body
+    
+        if (conversationId === undefined) response.code(400).send(ErrorResponse(400, 'Bad Request'))
 
-      if (!conversations.has(conversationId)) response.code(404).send(ErrorResponse(404, 'Conversation Not Found'))
-  
-      response.code(200).send({ conversationId: conversationId, message: 'Your message: ' + message + ' - My response: yeetombolis'})
+        if (!conversations.has(conversationId)) response.code(404).send(ErrorResponse(404, 'Conversation Not Found'))
+
+        let conversation = conversations.get(conversationId)
+
+        const chatReply = await getChatReply(conversation?.messages ?? [])
+
+        conversation?.messages.concat(chatReply)
+    
+        response.code(200).send({ conversationId: conversationId, message: chatReply.content})
     })
-  }
+}
 
 function getSystemMessage(recipient: string): string {
     const sysadminName = directoryDataByEmplid.get(getSecrets().adminEmplid)?.name
