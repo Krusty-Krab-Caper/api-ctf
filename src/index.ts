@@ -5,10 +5,10 @@ import { registerDirectory } from './directory'
 import { registerClientsList, registerClientsDetails } from './clientsAdmin'
 import { registerSecrets } from './gameSecrets'
 import { ErrorResponse } from './util'
-import { getSecrets } from './gameSecrets'
 import { registerMitm } from './mitm'
 import { registerVault } from './vault'
 import { registerToken } from './tokenEndpoint'
+import { registerChat, registerConversation } from './chatEndpoint'
 
 const server = fastify()
 
@@ -21,7 +21,11 @@ registerMitm(server)
 registerVault(server)
 registerToken(server)
 
+registerChat(server)
+registerConversation(server)
+
 registerSecrets(server)
+
 
 server.setNotFoundHandler(async function (request, reply) {
   await reply.code(404).send(ErrorResponse(404, 'Path not found'))
