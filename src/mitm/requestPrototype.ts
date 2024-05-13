@@ -1,4 +1,5 @@
 export const requestPrototype = {
+  channel: 'front',
   http_request: {
     headers: {
       accept: 'application/json',

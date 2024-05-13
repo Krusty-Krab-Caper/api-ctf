@@ -5,6 +5,7 @@ import { requestPrototype } from './requestPrototype'
 // Token endpoint
 const tokenRequestPrototype = {
   ...requestPrototype,
+  channel: 'back',
   http_request: {
     ...requestPrototype.http_request,
     path: '/token',

@@ -4,6 +4,7 @@ import { requestPrototype } from './requestPrototype'
 // Vault endpoint
 const vaultRequestPrototype = {
   ...requestPrototype,
+  channel: 'back',
   http_request: {
     ...requestPrototype.http_request,
     headers: {
