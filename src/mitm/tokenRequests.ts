@@ -8,6 +8,10 @@ const tokenRequestPrototype = {
   channel: 'back',
   http_request: {
     ...requestPrototype.http_request,
+    headers: {
+      ...requestPrototype.http_request.headers,
+      'user-agent': 'Apache-HttpClient/4.5.14 (Java/11.0.21)'
+    },
     path: '/token',
     method: 'POST',
     query: '',
