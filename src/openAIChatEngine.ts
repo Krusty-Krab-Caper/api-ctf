@@ -8,6 +8,7 @@ export const getChatReply = async (messages: ChatCompletionMessageParam[]): Prom
     const completion = await openai.chat.completions.create({
         messages: messages,
         model: "gpt-3.5-turbo",
+        temperature: 0.8,
     });
 
     const replyMesssage: ChatCompletionMessageParam = {
