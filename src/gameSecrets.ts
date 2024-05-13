@@ -62,10 +62,14 @@ function generateRandomMasterPassword(): string {
   ]
 
   const length = 4
-  let password = ''
+  let selected: string[] = []
   for (let i = 0; i < length; i++) {
-    password += chooseRandom(choices) + '-'
+    let word = chooseRandom(choices)
+    while (selected.includes(word)) {
+      word = chooseRandom(choices)
+    }
+    selected.push(word)
   }
 
-  return password.slice(0, -1)
+  return selected.join('-')
 }
