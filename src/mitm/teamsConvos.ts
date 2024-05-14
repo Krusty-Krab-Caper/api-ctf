@@ -8,6 +8,8 @@ const tokenTeams1 = randomToken()
 const tokenTeams2 = randomToken()
 const tokenTeams3 = randomToken()
 const tokenTeams4 = randomToken()
+const tokenTeams5 = randomToken()
+const tokenTeams6 = randomToken()
 
 // convo between leaked-site team lead (2) and employee (1). 2 asks 1 to submit a PR. 1 submits the PR and asks 2 to approve it. 2 approves it and asks 1 to merge it. 1 merges it and realizes they pushed credentials. 1 asks 2 if they should delete the credentials. 2 says to submit another PR that deletes them. 1 asks if the history will still show the credentials. 2 says it should be fine. 1 submits the PR. 2 thanks 1.
 const teamsConvo1and2Messages = [
@@ -105,6 +107,45 @@ const teamsConvo1and4Messages = [
   }
 ]
 
+const teamsConvo5and6Messages = [
+  {
+    token: tokenTeams5,
+    message: `Hey man, I'm working on the Chum Bucket Alert app and it says it needs an access token. Do you know how to get that?`
+  },
+  {
+    token: tokenTeams6,
+    message:
+      'Sure. So you need to ues the /token endpoint with your client id and secret. Do you already have those?'
+  },
+  {
+    token: tokenTeams5,
+    message: `Nope, how do I find those client details?`
+  },
+  {
+    token: tokenTeams6,
+    message:
+      'I think the Systems Administrator owns all of the ids. The secrets got written down somewhere, but idk where they are.'
+  },
+  {
+    token: tokenTeams5,
+    message: `k, i'll hunt them down. So when I get those I just need to call the /token endpoint?`
+  },
+  {
+    token: tokenTeams6,
+    message:
+      'Yeah, I think this here has good documentation on how to do that: https://github.com/byu-oit/tutorial-consume-tyk-api'
+  },
+  {
+    token: tokenTeams5,
+    message: `Wait, isn't that for Tyk? I didn't know we used that here.`
+  },
+  {
+    token: tokenTeams6,
+    message:
+      `No we don't but it's pretty standard practice. It's how it works here.`
+  },
+]
+
 const teamsConvoRequestPrototype = {
   ...requestPrototype,
   http_request: {
@@ -170,4 +211,22 @@ const teamsConvo1and4 = teamsConvo1and4Messages.map((message) => ({
   msg: 'completed handling request'
 }))
 
-export const teamsConvos = [teamsConvo1and4, teamsConvo1and2, teamsConvo2and3]
+const teamsConvo5and6 = teamsConvo5and6Messages.map((message) => ({
+  ...teamsConvoRequestPrototype,
+  http_request: {
+    ...teamsConvoRequestPrototype.http_request,
+    headers: {
+      ...teamsConvoRequestPrototype.http_request.headers,
+      authorization: 'Bearer ' + message.token
+    },
+    path: '/conversation/7833942856',
+    method: 'POST',
+    query: '',
+    body: {
+      message: message.message
+    }
+  },
+  msg: 'completed handling request'
+}))
+
+export const teamsConvos = [teamsConvo1and4, teamsConvo1and2, teamsConvo2and3, teamsConvo5and6]
