@@ -9,7 +9,7 @@ type OpenSesameRequest = FastifyRequest<{
   Querystring: OpenSesameQuery
 }>
 
-const css = `
+const vaultCss = `
 <style>
     body {
         background-color: #f9f9f9;
@@ -60,12 +60,12 @@ const css = `
 </style>
 `
 
-const html = `
+const vaultHtml = `
 <!DOCTYPE html>
 <html>
     <head>
         <title>The Krusty Krab Recipe Vault</title>
-        ${css}
+        ${vaultCss}
     </head>
     <body>
         <h1>The Krusty Krab Recipe Vault Login</h1>
@@ -80,10 +80,12 @@ const html = `
             <p>If you have forgotten the master password, please ask your system administrator.</p>
         </div>
         <script>
+            const recipeEndpoint = '/vault/opensesame?password=';
             document.getElementById('login-form').addEventListener('submit', function(event) {
                 event.preventDefault();
-                const password = document.getElementById('master-password').value;
-                window.location.href = \`/vault/opensesame?password=\${encodeURIComponent(password)}\`;
+                const passwordInput = document.getElementById('master-password');
+                const password = passwordInput.value;
+                window.location.href = recipeEndpoint + password;
             });
         </script>
     </body>
@@ -178,7 +180,7 @@ export function registerVault(server: FastifyInstance) {
       return
     }
 
-    reply.header('Content-Type', 'text/html').send(html)
+    reply.header('Content-Type', 'text/html').send(vaultHtml)
   })
   server.get('/vault/opensesame', async (request: OpenSesameRequest, reply) => {
     const receivedToken = request.headers.authorization
