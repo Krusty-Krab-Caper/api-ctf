@@ -50,12 +50,6 @@ const hostEndpointMap: Record<string, Endpoint[]> = {
     { path: '/users', methods: ['GET'] },
     { path: '/search', methods: ['GET'] }
   ],
-  'github.com': [
-    { path: '/repositories', methods: ['GET', 'POST', 'PUT', 'DELETE'], needsAuth: true },
-    { path: '/explore', methods: ['GET'] },
-    { path: '/notifications', methods: ['GET'], needsAuth: true },
-    { path: '/messages', methods: ['GET'], needsAuth: true }
-  ],
   'twitter.com': [
     { path: '/home', methods: ['GET'], needsAuth: true },
     { path: '/explore', methods: ['GET'], needsAuth: true },
@@ -115,6 +109,7 @@ export function generateRandomLog() {
     ...(endpoint.needsAuth ? { authorization: `Bearer ${randomToken()}` } : {})
   }
   return {
+    channel: 'front',
     http_request: {
       headers: headers,
       host: host,
