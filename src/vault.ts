@@ -195,7 +195,8 @@ export function registerVault(server: FastifyInstance) {
       await reply.code(403).send('Forbidden')
       return
     }
-
-    reply.header('Content-Type', 'text/html').send(recipeHtml)
+    else {
+        reply.header('Content-Type', 'text/html').send(recipeHtml)
+    }
   })
 }
